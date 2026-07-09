@@ -13,7 +13,35 @@ const createUser = async (req: Request, res: Response) => {
       data: result,
     });
   } catch (error: any) {
-    console.error("Error creating user:", error);
+    res.status(httpStatus.INTERNAL_SERVER_ERROR).json({
+      success: false,
+      status: httpStatus.INTERNAL_SERVER_ERROR,
+      message: error.message as Error,
+      error: error,
+    });
+  }
+};
+
+const loginUser = async (req: Request, res: Response) => {
+  try {
+    const result = await authService.loginUser(req.body);
+
+    const { accessToken } = result;
+
+    res.cookie("accessToken", accessToken, {
+      httpOnly: true,
+      secure: false,
+      sameSite: "none",
+      maxAge: 24 * 60 * 60 * 1000, // 1 day
+    });
+
+    res.status(httpStatus.OK).json({
+      success: true,
+      status: httpStatus.OK,
+      message: "User logged in successfully",
+      data: result,
+    });
+  } catch (error: any) {
     res.status(httpStatus.INTERNAL_SERVER_ERROR).json({
       success: false,
       status: httpStatus.INTERNAL_SERVER_ERROR,
@@ -25,4 +53,5 @@ const createUser = async (req: Request, res: Response) => {
 
 export const authController = {
   createUser,
+  loginUser,
 };
