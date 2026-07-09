@@ -1,0 +1,13 @@
+model technicianProfile {
+    id String @id @default(uuid())
+    userId String @unique
+    user User @relation(fields: [userId], references: [id])
+    bio String
+    experience Int
+    location String
+    hourlyRate Float
+    averageRating Float @default(0)
+    completedJobs Int @default(0)
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}

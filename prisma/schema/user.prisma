@@ -6,6 +6,7 @@ model User {
     phone String
     role Role @default(CUSTOMER)
     status Status @default(ACTIVE)
+    technicianProfile technicianProfile?
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
 
