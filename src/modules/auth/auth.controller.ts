@@ -12,11 +12,12 @@ const createUser = async (req: Request, res: Response) => {
       message: "User created successfully",
       data: result,
     });
-  } catch (error) {
+  } catch (error: any) {
+    console.error("Error creating user:", error);
     res.status(httpStatus.INTERNAL_SERVER_ERROR).json({
       success: false,
       status: httpStatus.INTERNAL_SERVER_ERROR,
-      message: "Failed to create user",
+      message: error.message as Error,
       error: error,
     });
   }

@@ -16,7 +16,7 @@ const createUserIntoDB = async (payload: any) => {
     throw new Error('User already exists');
   }
 
-  const hashedPassword = await bcrypt.hash(password, Number(config.BCRYPT_SALT_ROUNDS));
+  const hashedPassword = await bcrypt.hash(String(password), Number(config.BCRYPT_SALT_ROUNDS));
 
   const createdUser = await prisma.user.create({
     data: {
