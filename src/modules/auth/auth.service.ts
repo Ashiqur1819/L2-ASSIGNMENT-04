@@ -88,7 +88,29 @@ const loginUser = async (payload: any) => {
   return { data, accessToken };
 };
 
+const getMe = async (userId: string) => {
+  const user = await prisma.user.findUnique({
+    where: {
+      id: userId,
+    },
+    omit: {
+      password: true,
+    },
+  });
+
+  if (!user) {
+    throw new Error("User does not exist");
+  }
+
+  if (user.status === "BLOCKED") {
+    throw new Error("User is blocked");
+  }
+
+  return user;
+};
+
 export const authService = {
   createUserIntoDB,
   loginUser,
+  getMe,
 };

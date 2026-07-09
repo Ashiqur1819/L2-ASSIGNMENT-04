@@ -51,7 +51,31 @@ const loginUser = async (req: Request, res: Response) => {
   }
 };
 
+const getMe = async (req: Request, res: Response) => {
+  try {
+    const userId = req.user?.userId;
+
+    const user = await authService.getMe(userId as string);
+
+    res.status(httpStatus.OK).json({
+      success: true,
+      status: httpStatus.OK,
+      message: "User retrieved successfully",
+      data: user,
+    });
+  } catch (error: any) {
+    console.error("Error in getMe controller:", error);
+    res.status(httpStatus.INTERNAL_SERVER_ERROR).json({
+      success: false,
+      status: httpStatus.INTERNAL_SERVER_ERROR,
+      message: error.message as Error,
+      error: error,
+    });
+  }
+};
+
 export const authController = {
   createUser,
   loginUser,
+  getMe,
 };
