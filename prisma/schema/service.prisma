@@ -6,7 +6,7 @@ model Service {
     categoryId String
     category Category @relation(fields: [categoryId], references: [id])
     technicianProfileId String
-    technicianProfile technicianProfile @relation(fields: [technicianProfileId], references: [id])
+    technicianProfile TechnicianProfile @relation(fields: [technicianProfileId], references: [id])
     estimatedDuration Int
     isAvailable Boolean @default(true)
     createdAt DateTime @default(now())
