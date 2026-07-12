@@ -7,6 +7,7 @@ model User {
     role Role @default(CUSTOMER)
     status Status @default(ACTIVE)
     technicianProfile TechnicianProfile?
+    customer Booking[]
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
 
