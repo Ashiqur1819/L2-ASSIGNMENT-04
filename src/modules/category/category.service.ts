@@ -19,15 +19,15 @@ const createCategory = async (payload: ICategory) => {
   return result;
 };
 
-// const getAllCategories = async () => {
-//   const result = await prisma.category.findMany({
-//     orderBy: {
-//       createdAt: "desc",
-//     },
-//   });
+const getAllCategories = async () => {
+  const result = await prisma.category.findMany({
+    orderBy: {
+      createdAt: "desc",
+    },
+  });
 
-//   return result;
-// };
+  return result;
+};
 
 // const getSingleCategory = async (id: string) => {
 //   const result = await prisma.category.findUnique({
@@ -104,7 +104,7 @@ const createCategory = async (payload: ICategory) => {
 
 export const categoryService = {
   createCategory,
-//   getAllCategories,
+  getAllCategories,
 //   getSingleCategory,
 //   updateCategory,
 //   deleteCategory,

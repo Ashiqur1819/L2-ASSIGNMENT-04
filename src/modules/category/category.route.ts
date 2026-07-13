@@ -6,7 +6,7 @@ import { categoryController } from "./category.controller";
 const router = Router();
 
 // Public Routes
-// router.get("/", categoryController.getAllCategories);
+router.get("/", categoryController.getAllCategories);
 // router.get("/:id", categoryController.getSingleCategory);
 
 // Admin Routes

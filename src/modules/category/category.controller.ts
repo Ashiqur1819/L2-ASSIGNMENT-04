@@ -20,23 +20,23 @@ const createCategory = async (req: Request, res: Response) => {
   }
 };
 
-// const getAllCategories = async (req: Request, res: Response) => {
-//   try {
-//     const result = await categoryService.getAllCategories();
+const getAllCategories = async (req: Request, res: Response) => {
+  try {
+    const result = await categoryService.getAllCategories();
 
-//     res.status(httpStatus.OK).json({
-//       success: true,
-//       message: "Categories retrieved successfully",
-//       data: result,
-//     });
-//   } catch (error) {
-//     res.status(httpStatus.INTERNAL_SERVER_ERROR).json({
-//       success: false,
-//       message:
-//         error instanceof Error ? error.message : "Something went wrong",
-//     });
-//   }
-// };
+    res.status(httpStatus.OK).json({
+      success: true,
+      message: "Categories retrieved successfully",
+      data: result,
+    });
+  } catch (error) {
+    res.status(httpStatus.INTERNAL_SERVER_ERROR).json({
+      success: false,
+      message:
+        error instanceof Error ? error.message : "Something went wrong",
+    });
+  }
+};
 
 // const getSingleCategory = async (req: Request, res: Response) => {
 //   try {
@@ -99,7 +99,7 @@ const createCategory = async (req: Request, res: Response) => {
 
 export const categoryController = {
   createCategory,
-//   getAllCategories,
+  getAllCategories,
 //   getSingleCategory,
 //   updateCategory,
 //   deleteCategory,
