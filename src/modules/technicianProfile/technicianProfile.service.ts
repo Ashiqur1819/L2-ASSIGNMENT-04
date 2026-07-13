@@ -80,34 +80,34 @@ const getMyProfile = async (userId: string) => {
 };
 
 
-// const getSingleTechnician = async (id: string) => {
-//   const result = await prisma.technicianProfile.findUnique({
-//     where: {
-//       id,
-//     },
-//     include: {
-//       user: {
-//         select: {
-//           id: true,
-//           name: true,
-//         },
-//       },
-//       services: true,
-//       availabilities: true,
-//       bookings: true,
-//     },
-//   });
+const getSingleTechnician = async (id: string) => {
+  const result = await prisma.technicianProfile.findUnique({
+    where: {
+      id,
+    },
+    include: {
+      user: {
+        select: {
+          id: true,
+          name: true,
+        },
+      },
+      services: true,
+      availabilities: true,
+      bookings: true,
+    },
+  });
 
-//   if (!result) {
-//     throw new Error("Technician not found");
-//   }
+  if (!result) {
+    throw new Error("Technician not found");
+  }
 
-//   return result;
-// };
+  return result;
+};
 
 export const TechnicianProfileService = {
   createTechnicianProfile,
   updateTechnicianProfile,
   getMyProfile,
-//   getSingleTechnician,
+  getSingleTechnician,
 };
