@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { TechnicianProfileController } from "./technicianProfile.controller";
-import { Role } from "../../../../generated/prisma/client";
-import { auth } from "../../../middlewares/auth";
+import { Role } from "../../../generated/prisma/client";
+import { auth } from "../../middlewares/auth";
 
 const router = Router();
 
@@ -20,11 +20,11 @@ router.patch(
 );
 
 // Get Logged-in Technician Profile
-// router.get(
-//   "/me",
-//   auth(Role.TECHNICIAN),
-//   TechnicianProfileController.getMyProfile,
-// );
+router.get(
+  "/me",
+  auth(Role.TECHNICIAN),
+  TechnicianProfileController.getMyProfile,
+);
 
 // Get Single Technician Profile (Public)
 // router.get(

@@ -1,4 +1,4 @@
-import { prisma } from "../../../lib/prisma";
+import { prisma } from "../../lib/prisma";
 import {
   ITechnicianProfile,
   IUpdateTechnicianProfile,
@@ -53,31 +53,31 @@ const updateTechnicianProfile = async (
   return result;
 };
 
-// const getMyProfile = async (userId: string) => {
-//   const result = await prisma.technicianProfile.findUnique({
-//     where: {
-//       userId,
-//     },
-//     include: {
-//       user: {
-//         select: {
-//           id: true,
-//           name: true,
-//           email: true,
-//           phone: true,
-//         },
-//       },
-//       services: true,
-//       availabilities: true,
-//     },
-//   });
+const getMyProfile = async (userId: string) => {
+  const result = await prisma.technicianProfile.findUnique({
+    where: {
+      userId,
+    },
+    include: {
+      user: {
+        select: {
+          id: true,
+          name: true,
+          email: true,
+          phone: true,
+        },
+      },
+      services: true,
+      availabilities: true,
+    },
+  });
 
-//   if (!result) {
-//     throw new Error("Technician profile not found");
-//   }
+  if (!result) {
+    throw new Error("Technician profile not found");
+  }
 
-//   return result;
-// };
+  return result;
+};
 
 
 // const getSingleTechnician = async (id: string) => {
@@ -108,6 +108,6 @@ const updateTechnicianProfile = async (
 export const TechnicianProfileService = {
   createTechnicianProfile,
   updateTechnicianProfile,
-//   getMyProfile,
+  getMyProfile,
 //   getSingleTechnician,
 };

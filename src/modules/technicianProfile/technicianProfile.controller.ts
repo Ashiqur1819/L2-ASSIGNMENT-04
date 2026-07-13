@@ -44,25 +44,25 @@ const updateTechnicianProfile = async (req: Request, res: Response) => {
   }
 };
 
-// const getMyProfile = async (req: Request, res: Response) => {
-//   try {
-//     const result = await TechnicianProfileService.getMyProfile(
-//       req.user!.userId,
-//     );
+const getMyProfile = async (req: Request, res: Response) => {
+  try {
+    const result = await TechnicianProfileService.getMyProfile(
+      req.user!.userId,
+    );
 
-//     res.status(httpStatus.OK).json({
-//       success: true,
-//       message: "Profile retrieved successfully",
-//       data: result,
-//     });
-//   } catch (error) {
-//     res.status(httpStatus.NOT_FOUND).json({
-//       success: false,
-//       message:
-//         error instanceof Error ? error.message : "Something went wrong",
-//     });
-//   }
-// };
+    res.status(httpStatus.OK).json({
+      success: true,
+      message: "Profile retrieved successfully",
+      data: result,
+    });
+  } catch (error) {
+    res.status(httpStatus.NOT_FOUND).json({
+      success: false,
+      message:
+        error instanceof Error ? error.message : "Something went wrong",
+    });
+  }
+};
 
 // const getSingleTechnician = async (req: Request, res: Response) => {
 //   try {
@@ -87,6 +87,6 @@ const updateTechnicianProfile = async (req: Request, res: Response) => {
 export const TechnicianProfileController = {
   createTechnicianProfile,
   updateTechnicianProfile,
-//   getMyProfile,
+  getMyProfile,
 //   getSingleTechnician,
 };

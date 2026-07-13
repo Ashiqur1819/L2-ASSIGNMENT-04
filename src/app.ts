@@ -1,7 +1,7 @@
 import express, { Application } from 'express';
 import { authRouter } from './modules/auth/auth.route';
 import cookieParser from 'cookie-parser';
-import { technicianProfileRouter } from './modules/auth/technicianProfile/technicianProfile.route';
+import { technicianProfileRouter } from './modules/technicianProfile/technicianProfile.route';
 
 const app: Application = express();
 
