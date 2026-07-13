@@ -13,11 +13,11 @@ router.post(
 );
 
 // Update Technician Profile
-// router.patch(
-//   "/",
-//   auth(Role.TECHNICIAN),
-//   TechnicianProfileController.updateTechnicianProfile,
-// );
+router.patch(
+  "/",
+  auth(Role.TECHNICIAN),
+  TechnicianProfileController.updateTechnicianProfile,
+);
 
 // Get Logged-in Technician Profile
 // router.get(

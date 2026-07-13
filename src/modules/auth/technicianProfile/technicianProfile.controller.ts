@@ -23,26 +23,26 @@ const createTechnicianProfile = async (req: Request, res: Response) => {
   }
 };
 
-// const updateTechnicianProfile = async (req: Request, res: Response) => {
-//   try {
-//     const result = await TechnicianProfileService.updateTechnicianProfile(
-//       req.user!.userId,
-//       req.body,
-//     );
+const updateTechnicianProfile = async (req: Request, res: Response) => {
+  try {
+    const result = await TechnicianProfileService.updateTechnicianProfile(
+      req.user!.userId,
+      req.body,
+    );
 
-//     res.status(httpStatus.OK).json({
-//       success: true,
-//       message: "Technician profile updated successfully",
-//       data: result,
-//     });
-//   } catch (error) {
-//     res.status(httpStatus.BAD_REQUEST).json({
-//       success: false,
-//       message:
-//         error instanceof Error ? error.message : "Something went wrong",
-//     });
-//   }
-// };
+    res.status(httpStatus.OK).json({
+      success: true,
+      message: "Technician profile updated successfully",
+      data: result,
+    });
+  } catch (error) {
+    res.status(httpStatus.BAD_REQUEST).json({
+      success: false,
+      message:
+        error instanceof Error ? error.message : "Something went wrong",
+    });
+  }
+};
 
 // const getMyProfile = async (req: Request, res: Response) => {
 //   try {
@@ -86,7 +86,7 @@ const createTechnicianProfile = async (req: Request, res: Response) => {
 
 export const TechnicianProfileController = {
   createTechnicianProfile,
-//   updateTechnicianProfile,
+  updateTechnicianProfile,
 //   getMyProfile,
 //   getSingleTechnician,
 };

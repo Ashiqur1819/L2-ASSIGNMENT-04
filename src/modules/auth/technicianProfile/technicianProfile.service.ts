@@ -29,29 +29,29 @@ const createTechnicianProfile = async (
   return result;
 };
 
-// const updateTechnicianProfile = async (
-//   userId: string,
-//   payload: IUpdateTechnicianProfile,
-// ) => {
-//   const profile = await prisma.technicianProfile.findUnique({
-//     where: {
-//       userId,
-//     },
-//   });
+const updateTechnicianProfile = async (
+  userId: string,
+  payload: IUpdateTechnicianProfile,
+) => {
+  const profile = await prisma.technicianProfile.findUnique({
+    where: {
+      userId,
+    },
+  });
 
-//   if (!profile) {
-//     throw new Error("Technician profile not found");
-//   }
+  if (!profile) {
+    throw new Error("Technician profile not found");
+  }
 
-//   const result = await prisma.technicianProfile.update({
-//     where: {
-//       userId,
-//     },
-//     data: payload,
-//   });
+  const result = await prisma.technicianProfile.update({
+    where: {
+      userId,
+    },
+    data: payload,
+  });
 
-//   return result;
-// };
+  return result;
+};
 
 // const getMyProfile = async (userId: string) => {
 //   const result = await prisma.technicianProfile.findUnique({
@@ -107,7 +107,7 @@ const createTechnicianProfile = async (
 
 export const TechnicianProfileService = {
   createTechnicianProfile,
-//   updateTechnicianProfile,
+  updateTechnicianProfile,
 //   getMyProfile,
 //   getSingleTechnician,
 };
