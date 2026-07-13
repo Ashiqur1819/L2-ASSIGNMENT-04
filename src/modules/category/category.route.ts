@@ -16,11 +16,11 @@ router.post(
   categoryController.createCategory,
 );
 
-// router.patch(
-//   "/:id",
-//   auth(Role.ADMIN),
-//   categoryController.updateCategory,
-// );
+router.patch(
+  "/:id",
+  auth(Role.ADMIN),
+  categoryController.updateCategory,
+);
 
 // router.delete(
 //   "/:id",

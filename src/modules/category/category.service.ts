@@ -46,41 +46,41 @@ const getSingleCategory = async (id: string) => {
   return result;
 };
 
-// const updateCategory = async (
-//   id: string,
-//   payload: Partial<ICategory>,
-// ) => {
-//   const isCategoryExists = await prisma.category.findUnique({
-//     where: {
-//       id,
-//     },
-//   });
+const updateCategory = async (
+  id: string,
+  payload: Partial<ICategory>,
+) => {
+  const isCategoryExists = await prisma.category.findUnique({
+    where: {
+      id,
+    },
+  });
 
-//   if (!isCategoryExists) {
-//     throw new Error("Category not found");
-//   }
+  if (!isCategoryExists) {
+    throw new Error("Category not found");
+  }
 
-//   if (payload.name) {
-//     const duplicateCategory = await prisma.category.findUnique({
-//       where: {
-//         name: payload.name,
-//       },
-//     });
+  if (payload.name) {
+    const duplicateCategory = await prisma.category.findUnique({
+      where: {
+        name: payload.name,
+      },
+    });
 
-//     if (duplicateCategory && duplicateCategory.id !== id) {
-//       throw new Error("Category already exists");
-//     }
-//   }
+    if (duplicateCategory && duplicateCategory.id !== id) {
+      throw new Error("Category already exists");
+    }
+  }
 
-//   const result = await prisma.category.update({
-//     where: {
-//       id,
-//     },
-//     data: payload,
-//   });
+  const result = await prisma.category.update({
+    where: {
+      id,
+    },
+    data: payload,
+  });
 
-//   return result;
-// };
+  return result;
+};
 
 // const deleteCategory = async (id: string) => {
 //   const isCategoryExists = await prisma.category.findUnique({
@@ -106,6 +106,6 @@ export const categoryService = {
   createCategory,
   getAllCategories,
   getSingleCategory,
-//   updateCategory,
+  updateCategory,
 //   deleteCategory,
 };
