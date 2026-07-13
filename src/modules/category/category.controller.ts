@@ -78,29 +78,29 @@ const updateCategory = async (req: Request, res: Response) => {
   }
 };
 
-// const deleteCategory = async (req: Request, res: Response) => {
-//   try {
-//     const { id } = req.params;
+const deleteCategory = async (req: Request, res: Response) => {
+  try {
+    const { id } = req.params;
 
-//     await categoryService.deleteCategory(id as string);
+    await categoryService.deleteCategory(id as string);
 
-//     res.status(httpStatus.OK).json({
-//       success: true,
-//       message: "Category deleted successfully",
-//     });
-//   } catch (error) {
-//     res.status(httpStatus.NOT_FOUND).json({
-//       success: false,
-//       message:
-//         error instanceof Error ? error.message : "Something went wrong",
-//     });
-//   }
-// };
+    res.status(httpStatus.OK).json({
+      success: true,
+      message: "Category deleted successfully",
+    });
+  } catch (error) {
+    res.status(httpStatus.NOT_FOUND).json({
+      success: false,
+      message:
+        error instanceof Error ? error.message : "Something went wrong",
+    });
+  }
+};
 
 export const categoryController = {
   createCategory,
   getAllCategories,
   getSingleCategory,
   updateCategory,
-//   deleteCategory,
+  deleteCategory,
 };
