@@ -7,7 +7,7 @@ const router = Router();
 
 // Public Routes
 router.get("/", categoryController.getAllCategories);
-// router.get("/:id", categoryController.getSingleCategory);
+router.get("/:id", categoryController.getSingleCategory);
 
 // Admin Routes
 router.post(

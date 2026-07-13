@@ -29,22 +29,22 @@ const getAllCategories = async () => {
   return result;
 };
 
-// const getSingleCategory = async (id: string) => {
-//   const result = await prisma.category.findUnique({
-//     where: {
-//       id,
-//     },
-//     include: {
-//       services: true,
-//     },
-//   });
+const getSingleCategory = async (id: string) => {
+  const result = await prisma.category.findUnique({
+    where: {
+      id,
+    },
+    include: {
+      services: true,
+    },
+  });
 
-//   if (!result) {
-//     throw new Error("Category not found");
-//   }
+  if (!result) {
+    throw new Error("Category not found");
+  }
 
-//   return result;
-// };
+  return result;
+};
 
 // const updateCategory = async (
 //   id: string,
@@ -105,7 +105,7 @@ const getAllCategories = async () => {
 export const categoryService = {
   createCategory,
   getAllCategories,
-//   getSingleCategory,
+  getSingleCategory,
 //   updateCategory,
 //   deleteCategory,
 };

@@ -38,25 +38,25 @@ const getAllCategories = async (req: Request, res: Response) => {
   }
 };
 
-// const getSingleCategory = async (req: Request, res: Response) => {
-//   try {
-//     const { id } = req.params;
+const getSingleCategory = async (req: Request, res: Response) => {
+  try {
+    const { id } = req.params;
 
-//     const result = await categoryService.getSingleCategory(id as string);
+    const result = await categoryService.getSingleCategory(id as string);
 
-//     res.status(httpStatus.OK).json({
-//       success: true,
-//       message: "Category retrieved successfully",
-//       data: result,
-//     });
-//   } catch (error) {
-//     res.status(httpStatus.NOT_FOUND).json({
-//       success: false,
-//       message:
-//         error instanceof Error ? error.message : "Something went wrong",
-//     });
-//   }
-// };
+    res.status(httpStatus.OK).json({
+      success: true,
+      message: "Category retrieved successfully",
+      data: result,
+    });
+  } catch (error) {
+    res.status(httpStatus.NOT_FOUND).json({
+      success: false,
+      message:
+        error instanceof Error ? error.message : "Something went wrong",
+    });
+  }
+};
 
 // const updateCategory = async (req: Request, res: Response) => {
 //   try {
@@ -100,7 +100,7 @@ const getAllCategories = async (req: Request, res: Response) => {
 export const categoryController = {
   createCategory,
   getAllCategories,
-//   getSingleCategory,
+  getSingleCategory,
 //   updateCategory,
 //   deleteCategory,
 };
