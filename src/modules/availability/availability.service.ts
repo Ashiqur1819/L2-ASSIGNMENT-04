@@ -219,5 +219,5 @@ export const availabilityService = {
   updateAvailability,
   deleteAvailability,
   getMyAvailability,
-  // getTechnicianAvailability,
+  getTechnicianAvailability,
 };

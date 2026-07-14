@@ -85,33 +85,33 @@ const getMyAvailability = async (req: Request, res: Response) => {
   }
 };
 
-// const getTechnicianAvailability = async (
-//   req: Request,
-//   res: Response,
-// ) => {
-//   try {
-//     const result = await availabilityService.getTechnicianAvailability(
-//       req.params.technicianId,
-//     );
+const getTechnicianAvailability = async (
+  req: Request,
+  res: Response,
+) => {
+  try {
+    const result = await availabilityService.getTechnicianAvailability(
+      req.params.technicianId as string,
+    );
 
-//     res.status(httpStatus.OK).json({
-//       success: true,
-//       message: "Availability retrieved successfully",
-//       data: result,
-//     });
-//   } catch (error) {
-//     res.status(httpStatus.NOT_FOUND).json({
-//       success: false,
-//       message:
-//         error instanceof Error ? error.message : "Something went wrong",
-//     });
-//   }
-// };
+    res.status(httpStatus.OK).json({
+      success: true,
+      message: "Availability retrieved successfully",
+      data: result,
+    });
+  } catch (error) {
+    res.status(httpStatus.NOT_FOUND).json({
+      success: false,
+      message:
+        error instanceof Error ? error.message : "Something went wrong",
+    });
+  }
+};
 
 export const availabilityController = {
   createAvailability,
   updateAvailability,
   deleteAvailability,
   getMyAvailability,
-//   getTechnicianAvailability,
+  getTechnicianAvailability,
 };

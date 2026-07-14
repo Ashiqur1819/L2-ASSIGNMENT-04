@@ -37,9 +37,9 @@ router.delete(
    Public Routes
 =========================== */
 
-// router.get(
-//   "/:technicianId",
-//   availabilityController.getTechnicianAvailability,
-// );
+router.get(
+  "/:technicianId",
+  availabilityController.getTechnicianAvailability,
+);
 
 export const availabilityRouter = router;
