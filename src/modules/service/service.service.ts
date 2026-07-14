@@ -223,7 +223,7 @@ const getSingleService = async (serviceId: string) => {
 export const serviceService = {
   createService,
   updateService,
-//   deleteService,
+  deleteService,
 //   getMyServices,
 //   getAllServices,
 //   getSingleService,

@@ -45,22 +45,22 @@ const updateService = async (req: Request, res: Response) => {
   }
 };
 
-// const deleteService = async (req: Request, res: Response) => {
-//   try {
-//     await serviceService.deleteService(req.user!.userId, req.params.id as string);
+const deleteService = async (req: Request, res: Response) => {
+  try {
+    await serviceService.deleteService(req.user!.userId, req.params.id as string);
 
-//     res.status(httpStatus.OK).json({
-//       success: true,
-//       message: "Service deleted successfully",
-//     });
-//   } catch (error) {
-//     res.status(httpStatus.BAD_REQUEST).json({
-//       success: false,
-//       message:
-//         error instanceof Error ? error.message : "Something went wrong",
-//     });
-//   }
-// };
+    res.status(httpStatus.OK).json({
+      success: true,
+      message: "Service deleted successfully",
+    });
+  } catch (error) {
+    res.status(httpStatus.BAD_REQUEST).json({
+      success: false,
+      message:
+        error instanceof Error ? error.message : "Something went wrong",
+    });
+  }
+};
 
 // const getMyServices = async (req: Request, res: Response) => {
 //   try {
@@ -119,7 +119,7 @@ const updateService = async (req: Request, res: Response) => {
 export const serviceController = {
   createService,
   updateService,
-//   deleteService,
+  deleteService,
 //   getMyServices,
 //   getAllServices,
 //   getSingleService,

@@ -25,11 +25,11 @@ router.patch(
   serviceController.updateService,
 );
 
-// router.delete(
-//   "/:id",
-//   auth(Role.TECHNICIAN),
-//   serviceController.deleteService,
-// );
+router.delete(
+  "/:id",
+  auth(Role.TECHNICIAN),
+  serviceController.deleteService,
+);
 
 // /* Public */
 
