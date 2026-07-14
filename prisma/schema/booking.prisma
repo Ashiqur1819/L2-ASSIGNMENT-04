@@ -18,18 +18,3 @@ model Booking {
 
     @@map("bookings")
 }
-
-
-// id
-// customerId
-// technicianId
-// serviceId
-// bookingDate
-// startTime
-// endTime
-// address
-// problemDescription
-// status
-// cancelReason
-// createdAt
-// updatedAt

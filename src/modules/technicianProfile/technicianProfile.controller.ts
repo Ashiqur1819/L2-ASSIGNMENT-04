@@ -17,8 +17,7 @@ const createTechnicianProfile = async (req: Request, res: Response) => {
   } catch (error) {
     res.status(httpStatus.BAD_REQUEST).json({
       success: false,
-      message:
-        error instanceof Error ? error.message : "Something went wrong",
+      message: error instanceof Error ? error.message : "Something went wrong",
     });
   }
 };
@@ -38,8 +37,7 @@ const updateTechnicianProfile = async (req: Request, res: Response) => {
   } catch (error) {
     res.status(httpStatus.BAD_REQUEST).json({
       success: false,
-      message:
-        error instanceof Error ? error.message : "Something went wrong",
+      message: error instanceof Error ? error.message : "Something went wrong",
     });
   }
 };
@@ -58,8 +56,7 @@ const getMyProfile = async (req: Request, res: Response) => {
   } catch (error) {
     res.status(httpStatus.NOT_FOUND).json({
       success: false,
-      message:
-        error instanceof Error ? error.message : "Something went wrong",
+      message: error instanceof Error ? error.message : "Something went wrong",
     });
   }
 };
@@ -78,8 +75,7 @@ const getSingleTechnician = async (req: Request, res: Response) => {
   } catch (error) {
     res.status(httpStatus.NOT_FOUND).json({
       success: false,
-      message:
-        error instanceof Error ? error.message : "Something went wrong",
+      message: error instanceof Error ? error.message : "Something went wrong",
     });
   }
 };

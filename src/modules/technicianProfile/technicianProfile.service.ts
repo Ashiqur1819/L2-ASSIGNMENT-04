@@ -4,7 +4,6 @@ import {
   IUpdateTechnicianProfile,
 } from "./technicianProfile.interface";
 
-
 const createTechnicianProfile = async (
   userId: string,
   payload: ITechnicianProfile,
@@ -78,7 +77,6 @@ const getMyProfile = async (userId: string) => {
 
   return result;
 };
-
 
 const getSingleTechnician = async (id: string) => {
   const result = await prisma.technicianProfile.findUnique({

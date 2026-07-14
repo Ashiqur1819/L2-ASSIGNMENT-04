@@ -18,3 +18,13 @@ enum BookingStatus {
     COMPLETED
     CANCELLED
 }
+
+enum Day {
+    MONDAY
+    TUESDAY
+    WEDNESDAY
+    THURSDAY
+    FRIDAY
+    SATURDAY
+    SUNDAY
+}

@@ -46,10 +46,7 @@ const getSingleCategory = async (id: string) => {
   return result;
 };
 
-const updateCategory = async (
-  id: string,
-  payload: Partial<ICategory>,
-) => {
+const updateCategory = async (id: string, payload: Partial<ICategory>) => {
   const isCategoryExists = await prisma.category.findUnique({
     where: {
       id,

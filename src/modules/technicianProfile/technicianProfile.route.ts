@@ -27,9 +27,6 @@ router.get(
 );
 
 // Get Single Technician Profile (Public)
-router.get(
-  "/:id",
-  TechnicianProfileController.getSingleTechnician,
-);
+router.get("/:id", TechnicianProfileController.getSingleTechnician);
 
 export const technicianProfileRouter = router;
