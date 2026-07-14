@@ -218,6 +218,6 @@ export const availabilityService = {
   createAvailability,
   updateAvailability,
   deleteAvailability,
-  // getMyAvailability,
+  getMyAvailability,
   // getTechnicianAvailability,
 };

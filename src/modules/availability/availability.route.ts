@@ -15,11 +15,11 @@ router.post(
   availabilityController.createAvailability,
 );
 
-// router.get(
-//   "/my-slots",
-//   auth(Role.TECHNICIAN),
-//   availabilityController.getMyAvailability,
-// );
+router.get(
+  "/my-slots",
+  auth(Role.TECHNICIAN),
+  availabilityController.getMyAvailability,
+);
 
 router.patch(
   "/:id",
