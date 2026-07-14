@@ -45,25 +45,25 @@ const updateAvailability = async (req: Request, res: Response) => {
   }
 };
 
-// const deleteAvailability = async (req: Request, res: Response) => {
-//   try {
-//     await availabilityService.deleteAvailability(
-//       req.user!.userId,
-//       req.params.id,
-//     );
+const deleteAvailability = async (req: Request, res: Response) => {
+  try {
+    await availabilityService.deleteAvailability(
+      req.user!.userId,
+      req.params.id as string,
+    );
 
-//     res.status(httpStatus.OK).json({
-//       success: true,
-//       message: "Availability deleted successfully",
-//     });
-//   } catch (error) {
-//     res.status(httpStatus.BAD_REQUEST).json({
-//       success: false,
-//       message:
-//         error instanceof Error ? error.message : "Something went wrong",
-//     });
-//   }
-// };
+    res.status(httpStatus.OK).json({
+      success: true,
+      message: "Availability deleted successfully",
+    });
+  } catch (error) {
+    res.status(httpStatus.BAD_REQUEST).json({
+      success: false,
+      message:
+        error instanceof Error ? error.message : "Something went wrong",
+    });
+  }
+};
 
 // const getMyAvailability = async (req: Request, res: Response) => {
 //   try {
@@ -111,7 +111,7 @@ const updateAvailability = async (req: Request, res: Response) => {
 export const availabilityController = {
   createAvailability,
   updateAvailability,
-//   deleteAvailability,
+  deleteAvailability,
 //   getMyAvailability,
 //   getTechnicianAvailability,
 };

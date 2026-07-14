@@ -217,7 +217,7 @@ const getTechnicianAvailability = async (technicianId: string) => {
 export const availabilityService = {
   createAvailability,
   updateAvailability,
-  // deleteAvailability,
+  deleteAvailability,
   // getMyAvailability,
   // getTechnicianAvailability,
 };

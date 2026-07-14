@@ -27,11 +27,11 @@ router.patch(
   availabilityController.updateAvailability,
 );
 
-// router.delete(
-//   "/:id",
-//   auth(Role.TECHNICIAN),
-//   availabilityController.deleteAvailability,
-// );
+router.delete(
+  "/:id",
+  auth(Role.TECHNICIAN),
+  availabilityController.deleteAvailability,
+);
 
 /* ===========================
    Public Routes
