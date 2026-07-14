@@ -4,6 +4,7 @@ import cookieParser from 'cookie-parser';
 import { technicianProfileRouter } from './modules/technicianProfile/technicianProfile.route';
 import { categoryRouter } from './modules/category/category.route';
 import { serviceRouter } from './modules/service/service.route';
+import { availabilityRouter } from './modules/availability/availability.route';
 
 const app: Application = express();
 
@@ -16,6 +17,7 @@ app.use("/api/auth", authRouter);
 app.use("/api/technician-profile", technicianProfileRouter);
 app.use("/api/categories", categoryRouter)
 app.use("/api/services", serviceRouter);
+app.use("/api/availabilities", availabilityRouter)
 
 export default app;
 

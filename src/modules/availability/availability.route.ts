@@ -1,0 +1,45 @@
+import { Router } from "express";
+import { Role } from "../../../generated/prisma/enums";
+import { auth } from "../../middlewares/auth";
+import { availabilityController } from "./availability.controller";
+
+const router = Router();
+
+/* ===========================
+   Technician Routes
+=========================== */
+
+router.post(
+  "/",
+  auth(Role.TECHNICIAN),
+  availabilityController.createAvailability,
+);
+
+// router.get(
+//   "/my-slots",
+//   auth(Role.TECHNICIAN),
+//   availabilityController.getMyAvailability,
+// );
+
+// router.patch(
+//   "/:id",
+//   auth(Role.TECHNICIAN),
+//   availabilityController.updateAvailability,
+// );
+
+// router.delete(
+//   "/:id",
+//   auth(Role.TECHNICIAN),
+//   availabilityController.deleteAvailability,
+// );
+
+/* ===========================
+   Public Routes
+=========================== */
+
+// router.get(
+//   "/:technicianId",
+//   availabilityController.getTechnicianAvailability,
+// );
+
+export const availabilityRouter = router;
