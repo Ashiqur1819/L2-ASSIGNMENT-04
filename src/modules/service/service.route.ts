@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { Role } from "../../../generated/prisma/enums";
 import { auth } from "../../middlewares/auth";
-import { ServiceController } from "./service.controller";
+import { serviceController } from "./service.controller";
 
 const router = Router();
 
@@ -10,7 +10,7 @@ const router = Router();
 router.post(
   "/",
   auth(Role.TECHNICIAN),
-  ServiceController.createService,
+  serviceController.createService,
 );
 
 // router.get(
@@ -19,22 +19,22 @@ router.post(
 //   ServiceController.getMyServices,
 // );
 
-// router.patch(
-//   "/:id",
-//   auth(Role.TECHNICIAN),
-//   ServiceController.updateService,
-// );
+router.patch(
+  "/:id",
+  auth(Role.TECHNICIAN),
+  serviceController.updateService,
+);
 
 // router.delete(
 //   "/:id",
 //   auth(Role.TECHNICIAN),
-//   ServiceController.deleteService,
+//   serviceController.deleteService,
 // );
 
 // /* Public */
 
-// router.get("/", ServiceController.getAllServices);
+// router.get("/", serviceController.getAllServices);
 
-// router.get("/:id", ServiceController.getSingleService);
+// router.get("/:id", serviceController.getSingleService);
 
 export const serviceRouter = router;

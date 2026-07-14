@@ -220,9 +220,9 @@ const getSingleService = async (serviceId: string) => {
   return result;
 };
 
-export const ServiceService = {
+export const serviceService = {
   createService,
-//   updateService,
+  updateService,
 //   deleteService,
 //   getMyServices,
 //   getAllServices,

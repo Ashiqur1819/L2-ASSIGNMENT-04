@@ -1,10 +1,10 @@
 import { Request, Response } from "express";
 import httpStatus from "http-status";
-import { ServiceService } from "./service.service";
+import { serviceService } from "./service.service";
 
 const createService = async (req: Request, res: Response) => {
   try {
-    const result = await ServiceService.createService(
+    const result = await serviceService.createService(
       req.user!.userId,
       req.body,
     );
@@ -23,31 +23,31 @@ const createService = async (req: Request, res: Response) => {
   }
 };
 
-// const updateService = async (req: Request, res: Response) => {
-//   try {
-//     const result = await ServiceService.updateService(
-//       req.user!.userId,
-//       req.params.id as string,
-//       req.body,
-//     );
+const updateService = async (req: Request, res: Response) => {
+  try {
+    const result = await serviceService.updateService(
+      req.user!.userId,
+      req.params.id as string,
+      req.body,
+    );
 
-//     res.status(httpStatus.OK).json({
-//       success: true,
-//       message: "Service updated successfully",
-//       data: result,
-//     });
-//   } catch (error) {
-//     res.status(httpStatus.BAD_REQUEST).json({
-//       success: false,
-//       message:
-//         error instanceof Error ? error.message : "Something went wrong",
-//     });
-//   }
-// };
+    res.status(httpStatus.OK).json({
+      success: true,
+      message: "Service updated successfully",
+      data: result,
+    });
+  } catch (error) {
+    res.status(httpStatus.BAD_REQUEST).json({
+      success: false,
+      message:
+        error instanceof Error ? error.message : "Something went wrong",
+    });
+  }
+};
 
 // const deleteService = async (req: Request, res: Response) => {
 //   try {
-//     await ServiceService.deleteService(req.user!.userId, req.params.id as string);
+//     await serviceService.deleteService(req.user!.userId, req.params.id as string);
 
 //     res.status(httpStatus.OK).json({
 //       success: true,
@@ -64,7 +64,7 @@ const createService = async (req: Request, res: Response) => {
 
 // const getMyServices = async (req: Request, res: Response) => {
 //   try {
-//     const result = await ServiceService.getMyServices(req.user!.userId);
+//     const result = await serviceService.getMyServices(req.user!.userId);
 
 //     res.status(httpStatus.OK).json({
 //       success: true,
@@ -82,7 +82,7 @@ const createService = async (req: Request, res: Response) => {
 
 // const getAllServices = async (req: Request, res: Response) => {
 //   try {
-//     const result = await ServiceService.getAllServices();
+//     const result = await serviceService.getAllServices();
 
 //     res.status(httpStatus.OK).json({
 //       success: true,
@@ -100,7 +100,7 @@ const createService = async (req: Request, res: Response) => {
 
 // const getSingleService = async (req: Request, res: Response) => {
 //   try {
-//     const result = await ServiceService.getSingleService(req.params.id as string);
+//     const result = await serviceService.getSingleService(req.params.id as string);
 
 //     res.status(httpStatus.OK).json({
 //       success: true,
@@ -116,9 +116,9 @@ const createService = async (req: Request, res: Response) => {
 //   }
 // };
 
-export const ServiceController = {
+export const serviceController = {
   createService,
-//   updateService,
+  updateService,
 //   deleteService,
 //   getMyServices,
 //   getAllServices,
