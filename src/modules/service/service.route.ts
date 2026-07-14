@@ -33,7 +33,7 @@ router.delete(
 
 // /* Public */
 
-// router.get("/", serviceController.getAllServices);
+router.get("/", serviceController.getAllServices);
 
 // router.get("/:id", serviceController.getSingleService);
 
