@@ -226,5 +226,5 @@ export const serviceService = {
   deleteService,
   getMyServices,
   getAllServices,
-//   getSingleService,
+  getSingleService,
 };

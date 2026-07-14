@@ -35,6 +35,6 @@ router.delete(
 
 router.get("/", serviceController.getAllServices);
 
-// router.get("/:id", serviceController.getSingleService);
+router.get("/:id", serviceController.getSingleService);
 
 export const serviceRouter = router;
