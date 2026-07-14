@@ -62,23 +62,23 @@ const deleteService = async (req: Request, res: Response) => {
   }
 };
 
-// const getMyServices = async (req: Request, res: Response) => {
-//   try {
-//     const result = await serviceService.getMyServices(req.user!.userId);
+const getMyServices = async (req: Request, res: Response) => {
+  try {
+    const result = await serviceService.getMyServices(req.user!.userId);
 
-//     res.status(httpStatus.OK).json({
-//       success: true,
-//       message: "My services retrieved successfully",
-//       data: result,
-//     });
-//   } catch (error) {
-//     res.status(httpStatus.BAD_REQUEST).json({
-//       success: false,
-//       message:
-//         error instanceof Error ? error.message : "Something went wrong",
-//     });
-//   }
-// };
+    res.status(httpStatus.OK).json({
+      success: true,
+      message: "My services retrieved successfully",
+      data: result,
+    });
+  } catch (error) {
+    res.status(httpStatus.BAD_REQUEST).json({
+      success: false,
+      message:
+        error instanceof Error ? error.message : "Something went wrong",
+    });
+  }
+};
 
 // const getAllServices = async (req: Request, res: Response) => {
 //   try {
@@ -120,7 +120,7 @@ export const serviceController = {
   createService,
   updateService,
   deleteService,
-//   getMyServices,
+  getMyServices,
 //   getAllServices,
 //   getSingleService,
 };

@@ -13,11 +13,11 @@ router.post(
   serviceController.createService,
 );
 
-// router.get(
-//   "/my-services",
-//   auth(Role.TECHNICIAN),
-//   ServiceController.getMyServices,
-// );
+router.get(
+  "/my-services",
+  auth(Role.TECHNICIAN),
+  serviceController.getMyServices,
+);
 
 router.patch(
   "/:id",
