@@ -21,11 +21,11 @@ router.post(
 //   availabilityController.getMyAvailability,
 // );
 
-// router.patch(
-//   "/:id",
-//   auth(Role.TECHNICIAN),
-//   availabilityController.updateAvailability,
-// );
+router.patch(
+  "/:id",
+  auth(Role.TECHNICIAN),
+  availabilityController.updateAvailability,
+);
 
 // router.delete(
 //   "/:id",

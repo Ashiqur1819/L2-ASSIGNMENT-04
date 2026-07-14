@@ -23,27 +23,27 @@ const createAvailability = async (req: Request, res: Response) => {
   }
 };
 
-// const updateAvailability = async (req: Request, res: Response) => {
-//   try {
-//     const result = await availabilityService.updateAvailability(
-//       req.user!.userId,
-//       req.params.id,
-//       req.body,
-//     );
+const updateAvailability = async (req: Request, res: Response) => {
+  try {
+    const result = await availabilityService.updateAvailability(
+      req.user!.userId,
+      req.params.id as string,
+      req.body,
+    );
 
-//     res.status(httpStatus.OK).json({
-//       success: true,
-//       message: "Availability updated successfully",
-//       data: result,
-//     });
-//   } catch (error) {
-//     res.status(httpStatus.BAD_REQUEST).json({
-//       success: false,
-//       message:
-//         error instanceof Error ? error.message : "Something went wrong",
-//     });
-//   }
-// };
+    res.status(httpStatus.OK).json({
+      success: true,
+      message: "Availability updated successfully",
+      data: result,
+    });
+  } catch (error) {
+    res.status(httpStatus.BAD_REQUEST).json({
+      success: false,
+      message:
+        error instanceof Error ? error.message : "Something went wrong",
+    });
+  }
+};
 
 // const deleteAvailability = async (req: Request, res: Response) => {
 //   try {
@@ -110,7 +110,7 @@ const createAvailability = async (req: Request, res: Response) => {
 
 export const availabilityController = {
   createAvailability,
-//   updateAvailability,
+  updateAvailability,
 //   deleteAvailability,
 //   getMyAvailability,
 //   getTechnicianAvailability,
