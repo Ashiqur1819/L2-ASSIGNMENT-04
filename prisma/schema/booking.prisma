@@ -15,6 +15,7 @@ model Booking {
     cancelReason       String?
     availabilityId     String?
     availability       Availability?     @relation(fields: [availabilityId], references: [id])
+    payment            Payment?
     createdAt          DateTime          @default(now())
     updatedAt          DateTime          @updatedAt
 
