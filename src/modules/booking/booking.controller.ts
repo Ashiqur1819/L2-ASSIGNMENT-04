@@ -85,30 +85,30 @@ const getTechnicianBookings = async (
   }
 };
 
-// const updateBookingStatus = async (
-//   req: Request,
-//   res: Response,
-// ) => {
-//   try {
-//     const result = await bookingService.updateBookingStatus(
-//       req.user!.userId,
-//       req.params.id as string,
-//       req.body.status,
-//     );
+const updateBookingStatus = async (
+  req: Request,
+  res: Response,
+) => {
+  try {
+    const result = await bookingService.updateBookingStatus(
+      req.user!.userId,
+      req.params.id as string,
+      req.body.status,
+    );
 
-//     res.status(httpStatus.OK).json({
-//       success: true,
-//       message: "Booking status updated successfully",
-//       data: result,
-//     });
-//   } catch (error) {
-//     res.status(httpStatus.BAD_REQUEST).json({
-//       success: false,
-//       message:
-//         error instanceof Error ? error.message : "Something went wrong",
-//     });
-//   }
-// };
+    res.status(httpStatus.OK).json({
+      success: true,
+      message: "Booking status updated successfully",
+      data: result,
+    });
+  } catch (error) {
+    res.status(httpStatus.BAD_REQUEST).json({
+      success: false,
+      message:
+        error instanceof Error ? error.message : "Something went wrong",
+    });
+  }
+};
 
 // const cancelBooking = async (req: Request, res: Response) => {
 //   try {
@@ -137,6 +137,6 @@ export const bookingController = {
   getMyBookings,
   getSingleBooking,
   getTechnicianBookings,
-  // updateBookingStatus,
+  updateBookingStatus,
   // cancelBooking,
 };

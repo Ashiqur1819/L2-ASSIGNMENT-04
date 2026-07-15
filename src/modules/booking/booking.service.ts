@@ -383,6 +383,6 @@ export const bookingService = {
   getMyBookings,
   getSingleBooking,
   getTechnicianBookings,
-  // updateBookingStatus,
+  updateBookingStatus,
   // cancelBooking,
 };

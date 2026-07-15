@@ -28,11 +28,11 @@ router.get(
   bookingController.getSingleBooking,
 );
 
-// router.patch(
-//   "/:id/status",
-//   auth(Role.TECHNICIAN),
-//   bookingController.updateBookingStatus,
-// );
+router.patch(
+  "/:id/status",
+  auth(Role.TECHNICIAN),
+  bookingController.updateBookingStatus,
+);
 
 // router.patch(
 //   "/:id/cancel",
