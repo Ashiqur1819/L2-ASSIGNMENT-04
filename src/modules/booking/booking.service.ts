@@ -382,7 +382,7 @@ export const bookingService = {
   createBooking,
   getMyBookings,
   getSingleBooking,
-  // getTechnicianBookings,
+  getTechnicianBookings,
   // updateBookingStatus,
   // cancelBooking,
 };

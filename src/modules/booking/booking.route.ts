@@ -15,11 +15,11 @@ router.post("/", auth(Role.CUSTOMER), bookingController.createBooking);
 router.get("/", auth(Role.CUSTOMER), bookingController.getMyBookings);
 
 // Technician
-// router.get(
-//   "/technician",
-//   auth(Role.TECHNICIAN),
-//   bookingController.getTechnicianBookings,
-// );
+router.get(
+  "/technician",
+  auth(Role.TECHNICIAN),
+  bookingController.getTechnicianBookings,
+);
 
 // Common
 router.get(
