@@ -384,5 +384,5 @@ export const bookingService = {
   getSingleBooking,
   getTechnicianBookings,
   updateBookingStatus,
-  // cancelBooking,
+  cancelBooking,
 };

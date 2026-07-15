@@ -34,10 +34,10 @@ router.patch(
   bookingController.updateBookingStatus,
 );
 
-// router.patch(
-//   "/:id/cancel",
-//   auth(Role.CUSTOMER),
-//   bookingController.cancelBooking,
-// );
+router.patch(
+  "/:id/cancel",
+  auth(Role.CUSTOMER),
+  bookingController.cancelBooking,
+);
 
 export const bookingRouter = router;
