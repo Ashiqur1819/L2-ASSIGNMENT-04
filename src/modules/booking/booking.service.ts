@@ -103,10 +103,18 @@ const createBooking = async (
       problemDescription: payload.problemDescription,
     },
     include: {
-      customer: true,
+      customer: {
+        omit: {
+          password: true,
+        },
+      },
       technician: {
         include: {
-          user: true,
+          user: {
+            omit: {
+              password: true,
+            },
+          },
         },
       },
       service: true,
@@ -132,7 +140,11 @@ const getMyBookings = async (userId: string) => {
 
       technician: {
         include: {
-          user: true,
+          user: {
+            omit: {
+              password: true,
+            },
+          },
         },
       },
 
@@ -156,10 +168,18 @@ const getSingleBooking = async (
       id: bookingId,
     },
     include: {
-      customer: true,
+      customer: {
+        omit: {
+          password: true,
+        },
+      },
       technician: {
         include: {
-          user: true,
+          user: {
+            omit: {
+              password: true,
+            },
+          },
         },
       },
       service: {
@@ -211,7 +231,11 @@ const getTechnicianBookings = async (userId: string) => {
       technicianId: technicianProfile.id,
     },
     include: {
-      customer: true,
+      customer: {
+        omit: {
+          password: true,
+        },
+      },
       service: {
         include: {
           category: true,
@@ -357,7 +381,7 @@ const cancelBooking = async (
 export const bookingService = {
   createBooking,
   getMyBookings,
-  // getSingleBooking,
+  getSingleBooking,
   // getTechnicianBookings,
   // updateBookingStatus,
   // cancelBooking,

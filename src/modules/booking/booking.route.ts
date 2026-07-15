@@ -22,11 +22,11 @@ router.get("/", auth(Role.CUSTOMER), bookingController.getMyBookings);
 // );
 
 // Common
-// router.get(
-//   "/:id",
-//   auth(Role.CUSTOMER, Role.TECHNICIAN),
-//   bookingController.getSingleBooking,
-// );
+router.get(
+  "/:id",
+  auth(Role.CUSTOMER, Role.TECHNICIAN),
+  bookingController.getSingleBooking,
+);
 
 // router.patch(
 //   "/:id/status",
