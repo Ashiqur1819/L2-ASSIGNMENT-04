@@ -356,7 +356,7 @@ const cancelBooking = async (
 
 export const bookingService = {
   createBooking,
-  // getMyBookings,
+  getMyBookings,
   // getSingleBooking,
   // getTechnicianBookings,
   // updateBookingStatus,

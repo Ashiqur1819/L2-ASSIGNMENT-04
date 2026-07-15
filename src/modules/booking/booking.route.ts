@@ -12,7 +12,7 @@ const router = Router();
 // Customer
 router.post("/", auth(Role.CUSTOMER), bookingController.createBooking);
 
-// router.get("/", auth(Role.CUSTOMER), bookingController.getMyBookings);
+router.get("/", auth(Role.CUSTOMER), bookingController.getMyBookings);
 
 // Technician
 // router.get(
