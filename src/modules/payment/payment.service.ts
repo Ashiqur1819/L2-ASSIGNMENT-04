@@ -88,9 +88,13 @@ if (!booking) {
 };
 
 const stripeWebhook = async (event: Stripe.Event) => {
+  console.log("EVENT:", event.type);
+
   switch (event.type) {
     case "payment_intent.succeeded": {
-      const paymentIntent = event.data.object;
+      const paymentIntent = event.data.object as Stripe.PaymentIntent;
+
+      console.log("PaymentIntent:", paymentIntent.id);
 
       const payment = await prisma.payment.findFirst({
         where: {
@@ -98,8 +102,11 @@ const stripeWebhook = async (event: Stripe.Event) => {
         },
       });
 
+      console.log("Payment:", payment);
+
       if (!payment) {
-        return;
+        console.log("Payment not found");
+        break;
       }
 
       await prisma.$transaction([
@@ -124,11 +131,13 @@ const stripeWebhook = async (event: Stripe.Event) => {
         }),
       ]);
 
+      console.log("Payment Completed");
+
       break;
     }
 
     case "payment_intent.payment_failed": {
-      const paymentIntent = event.data.object;
+      const paymentIntent = event.data.object as Stripe.PaymentIntent;
 
       const payment = await prisma.payment.findFirst({
         where: {
@@ -137,7 +146,7 @@ const stripeWebhook = async (event: Stripe.Event) => {
       });
 
       if (!payment) {
-        return;
+        break;
       }
 
       await prisma.payment.update({
@@ -149,11 +158,13 @@ const stripeWebhook = async (event: Stripe.Event) => {
         },
       });
 
+      console.log("Payment Failed");
+
       break;
     }
 
     default:
-      console.log(`Unhandled event: ${event.type}`);
+      console.log("Unhandled:", event.type);
   }
 };
 
@@ -222,7 +233,7 @@ const getSinglePayment = async (
 
 export const paymentService = {
   createPaymentIntent,
-//   stripeWebhook,
+  stripeWebhook,
 //   getMyPayments,
 //   getSinglePayment,
 };

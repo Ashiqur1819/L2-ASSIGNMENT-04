@@ -25,37 +25,42 @@ const createPaymentIntent = async (req: Request, res: Response) => {
   }
 };
 
-// const stripeWebhook = async (req: Request, res: Response) => {
-//   const signature = req.headers["stripe-signature"];
+const stripeWebhook = async (req: Request, res: Response) => {
+    console.log("Controller Hit");
+  const signature = req.headers["stripe-signature"];
 
-//   if (!signature) {
-//     return res.status(httpStatus.BAD_REQUEST).json({
-//       success: false,
-//       message: "Stripe signature is missing",
-//     });
-//   }
+  if (!signature) {
+    return res.status(httpStatus.BAD_REQUEST).json({
+      success: false,
+      message: "Stripe signature is missing",
+    });
+  }
 
-//   try {
-//     const event = stripe.webhooks.constructEvent(
-//       req.body,
-//       signature,
-//       config.STRIPE_WEBHOOK_SECRET as string,
-//     );
+  try {
+    const event = stripe.webhooks.constructEvent(
+      req.body,
+      signature,
+      config.STRIPE_WEBHOOK_SECRET as string,
+    );
 
-//     await paymentService.stripeWebhook(event);
+    console.log("========================");
+console.log("EVENT TYPE:", event.type);
+console.log("========================");
 
-//     res.status(httpStatus.OK).json({
-//       received: true,
-//     });
-//   } catch (error) {
-//     console.error(error);
+    await paymentService.stripeWebhook(event);
 
-//     res.status(httpStatus.BAD_REQUEST).json({
-//       success: false,
-//       message: "Webhook Error",
-//     });
-//   }
-// };
+    res.status(httpStatus.OK).json({
+      received: true,
+    });
+  } catch (error) {
+  console.error("WEBHOOK ERROR:", error);
+
+  return res.status(httpStatus.BAD_REQUEST).json({
+    success: false,
+    message: error instanceof Error ? error.message : "Webhook Error",
+  });
+}
+};
 
 // const getMyPayments = async (req: Request, res: Response) => {
 //   try {
@@ -96,9 +101,9 @@ const createPaymentIntent = async (req: Request, res: Response) => {
 //   }
 // };
 
-export const PaymentController = {
+export const paymentController = {
   createPaymentIntent,
-//   stripeWebhook,
+  stripeWebhook,
 //   getMyPayments,
 //   getSinglePayment,
 };

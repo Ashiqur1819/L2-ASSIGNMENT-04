@@ -1,19 +1,11 @@
 import express, { Router } from "express";
 import { Role } from "../../../generated/prisma/enums";
 import { auth } from "../../middlewares/auth";
-import { PaymentController } from "./payment.controller";
+import { paymentController } from "./payment.controller";
 
 const router = Router();
 
-/* ===========================
-   Stripe Webhook
-=========================== */
 
-// router.post(
-//   "/webhook",
-//   express.raw({ type: "application/json" }),
-//   PaymentController.stripeWebhook,
-// );
 
 /* ===========================
    Customer Routes
@@ -23,21 +15,21 @@ const router = Router();
 router.post(
   "/create",
   auth(Role.CUSTOMER),
-  PaymentController.createPaymentIntent,
+  paymentController.createPaymentIntent,
 );
 
 // Get My Payments
 // router.get(
 //   "/",
 //   auth(Role.CUSTOMER),
-//   PaymentController.getMyPayments,
+//   paymentController.getMyPayments,
 // );
 
 // Get Single Payment
 // router.get(
 //   "/:id",
 //   auth(Role.CUSTOMER),
-//   PaymentController.getSinglePayment,
+//   paymentController.getSinglePayment,
 // );
 
 export const paymentRouter = router;
