@@ -1,15 +1,10 @@
-import express, { Router } from "express";
+import { Router } from "express";
 import { Role } from "../../../generated/prisma/enums";
 import { auth } from "../../middlewares/auth";
 import { paymentController } from "./payment.controller";
 
 const router = Router();
 
-
-
-/* ===========================
-   Customer Routes
-=========================== */
 
 // Create Payment Intent
 router.post(

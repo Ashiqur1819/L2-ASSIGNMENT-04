@@ -8,6 +8,7 @@ model User {
     status Status @default(ACTIVE)
     technicianProfile TechnicianProfile?
     customer Booking[]
+    reviews Review[]
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
 
