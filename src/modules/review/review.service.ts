@@ -294,7 +294,7 @@ export const reviewService = {
   createReview,
   getAllReviews,
   getSingleReview,
-//   getTechnicianReviews,
+  getTechnicianReviews,
 //   updateReview,
 //   deleteReview,
 };

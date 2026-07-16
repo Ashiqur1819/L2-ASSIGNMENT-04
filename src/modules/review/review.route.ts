@@ -16,10 +16,10 @@ router.get(
 );
 
 // Get Reviews By Technician
-// router.get(
-//   "/technician/:technicianId",
-//   reviewController.getTechnicianReviews,
-// );
+router.get(
+  "/technician/:technicianId",
+  reviewController.getTechnicianReviews,
+);
 
 // Get Single Review
 router.get(
