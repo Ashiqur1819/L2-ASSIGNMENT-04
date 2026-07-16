@@ -26,10 +26,10 @@ router.get(
 );
 
 // Get Single Payment
-// router.get(
-//   "/:id",
-//   auth(Role.CUSTOMER),
-//   paymentController.getSinglePayment,
-// );
+router.get(
+  "/:id",
+  auth(Role.CUSTOMER),
+  paymentController.getSinglePayment,
+);
 
 export const paymentRouter = router;

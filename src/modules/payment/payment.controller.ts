@@ -80,30 +80,30 @@ const getMyPayments = async (req: Request, res: Response) => {
   }
 };
 
-// const getSinglePayment = async (req: Request, res: Response) => {
-//   try {
-//     const result = await paymentService.getSinglePayment(
-//       req.user!.userId,
-//       req.params.id as string,
-//     );
+const getSinglePayment = async (req: Request, res: Response) => {
+  try {
+    const result = await paymentService.getSinglePayment(
+      req.user!.userId,
+      req.params.id as string,
+    );
 
-//     res.status(httpStatus.OK).json({
-//       success: true,
-//       message: "Payment retrieved successfully",
-//       data: result,
-//     });
-//   } catch (error) {
-//     res.status(httpStatus.BAD_REQUEST).json({
-//       success: false,
-//       message:
-//         error instanceof Error ? error.message : "Something went wrong",
-//     });
-//   }
-// };
+    res.status(httpStatus.OK).json({
+      success: true,
+      message: "Payment retrieved successfully",
+      data: result,
+    });
+  } catch (error) {
+    res.status(httpStatus.BAD_REQUEST).json({
+      success: false,
+      message:
+        error instanceof Error ? error.message : "Something went wrong",
+    });
+  }
+};
 
 export const paymentController = {
   createPaymentIntent,
   stripeWebhook,
   getMyPayments,
-//   getSinglePayment,
+  getSinglePayment,
 };

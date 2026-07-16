@@ -235,5 +235,5 @@ export const paymentService = {
   createPaymentIntent,
   stripeWebhook,
   getMyPayments,
-//   getSinglePayment,
+  getSinglePayment,
 };
