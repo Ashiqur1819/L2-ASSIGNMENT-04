@@ -293,7 +293,7 @@ const deleteReview = async (
 export const reviewService = {
   createReview,
   getAllReviews,
-//   getSingleReview,
+  getSingleReview,
 //   getTechnicianReviews,
 //   updateReview,
 //   deleteReview,

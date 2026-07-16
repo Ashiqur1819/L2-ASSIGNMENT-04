@@ -22,10 +22,10 @@ router.get(
 // );
 
 // Get Single Review
-// router.get(
-//   "/:id",
-//   reviewController.getSingleReview,
-// );
+router.get(
+  "/:id",
+  reviewController.getSingleReview,
+);
 
 /* ===========================
    Customer Routes
