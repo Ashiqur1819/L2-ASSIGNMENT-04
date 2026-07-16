@@ -19,11 +19,11 @@ router.post(
 );
 
 // Get My Payments
-// router.get(
-//   "/",
-//   auth(Role.CUSTOMER),
-//   paymentController.getMyPayments,
-// );
+router.get(
+  "/",
+  auth(Role.CUSTOMER),
+  paymentController.getMyPayments,
+);
 
 // Get Single Payment
 // router.get(

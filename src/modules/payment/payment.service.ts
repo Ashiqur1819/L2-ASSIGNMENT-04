@@ -234,6 +234,6 @@ const getSinglePayment = async (
 export const paymentService = {
   createPaymentIntent,
   stripeWebhook,
-//   getMyPayments,
+  getMyPayments,
 //   getSinglePayment,
 };
