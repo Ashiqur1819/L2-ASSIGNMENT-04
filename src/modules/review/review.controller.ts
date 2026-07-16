@@ -23,23 +23,23 @@ const createReview = async (req: Request, res: Response) => {
   }
 };
 
-// const getAllReviews = async (req: Request, res: Response) => {
-//   try {
-//     const result = await reviewService.getAllReviews();
+const getAllReviews = async (req: Request, res: Response) => {
+  try {
+    const result = await reviewService.getAllReviews();
 
-//     res.status(httpStatus.OK).json({
-//       success: true,
-//       message: "Reviews retrieved successfully",
-//       data: result,
-//     });
-//   } catch (error) {
-//     res.status(httpStatus.BAD_REQUEST).json({
-//       success: false,
-//       message:
-//         error instanceof Error ? error.message : "Something went wrong",
-//     });
-//   }
-// };
+    res.status(httpStatus.OK).json({
+      success: true,
+      message: "Reviews retrieved successfully",
+      data: result,
+    });
+  } catch (error) {
+    res.status(httpStatus.BAD_REQUEST).json({
+      success: false,
+      message:
+        error instanceof Error ? error.message : "Something went wrong",
+    });
+  }
+};
 
 // const getSingleReview = async (req: Request, res: Response) => {
 //   try {
@@ -129,7 +129,7 @@ const createReview = async (req: Request, res: Response) => {
 
 export const reviewController = {
   createReview,
-//   getAllReviews,
+  getAllReviews,
 //   getSingleReview,
 //   getTechnicianReviews,
 //   updateReview,

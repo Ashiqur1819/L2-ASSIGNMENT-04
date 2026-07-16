@@ -10,10 +10,10 @@ const router = Router();
 =========================== */
 
 // Get All Reviews
-// router.get(
-//   "/",
-//   reviewController.getAllReviews,
-// );
+router.get(
+  "/",
+  reviewController.getAllReviews,
+);
 
 // Get Reviews By Technician
 // router.get(
