@@ -106,26 +106,26 @@ const updateReview = async (req: Request, res: Response) => {
   }
 };
 
-// const deleteReview = async (req: Request, res: Response) => {
-//   try {
-//     await reviewService.deleteReview(
-//       req.user!.userId,
-//       req.params.id as string,
-//     );
+const deleteReview = async (req: Request, res: Response) => {
+  try {
+    await reviewService.deleteReview(
+      req.user!.userId,
+      req.params.id as string,
+    );
 
-//     res.status(httpStatus.OK).json({
-//       success: true,
-//       message: "Review deleted successfully",
-//       data: null,
-//     });
-//   } catch (error) {
-//     res.status(httpStatus.BAD_REQUEST).json({
-//       success: false,
-//       message:
-//         error instanceof Error ? error.message : "Something went wrong",
-//     });
-//   }
-// };
+    res.status(httpStatus.OK).json({
+      success: true,
+      message: "Review deleted successfully",
+      data: null,
+    });
+  } catch (error) {
+    res.status(httpStatus.BAD_REQUEST).json({
+      success: false,
+      message:
+        error instanceof Error ? error.message : "Something went wrong",
+    });
+  }
+};
 
 export const reviewController = {
   createReview,
@@ -133,5 +133,5 @@ export const reviewController = {
   getSingleReview,
   getTechnicianReviews,
   updateReview,
-//   deleteReview,
+  deleteReview,
 };
