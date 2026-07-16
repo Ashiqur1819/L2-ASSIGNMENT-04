@@ -8,6 +8,7 @@ import { availabilityRouter } from './modules/availability/availability.route';
 import { bookingRouter } from './modules/booking/booking.route';
 import { paymentRouter } from './modules/payment/payment.route';
 import { paymentController } from './modules/payment/payment.controller';
+import { reviewRouter } from './modules/review/review.route';
 
 const app: Application = express();
 
@@ -28,6 +29,7 @@ app.use("/api/services", serviceRouter);
 app.use("/api/availabilities", availabilityRouter);
 app.use("/api/bookings", bookingRouter);
 app.use("/api/payments", paymentRouter);
+app.use("/api/reviews", reviewRouter)
 
 export default app;
 
