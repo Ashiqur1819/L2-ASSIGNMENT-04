@@ -39,11 +39,11 @@ router.post(
 );
 
 // Update Review
-// router.patch(
-//   "/:id",
-//   auth(Role.CUSTOMER),
-//   reviewController.updateReview,
-// );
+router.patch(
+  "/:id",
+  auth(Role.CUSTOMER),
+  reviewController.updateReview,
+);
 
 // Delete Review
 // router.delete(

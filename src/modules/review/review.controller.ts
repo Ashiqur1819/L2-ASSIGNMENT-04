@@ -84,27 +84,27 @@ const getTechnicianReviews = async (
   }
 };
 
-// const updateReview = async (req: Request, res: Response) => {
-//   try {
-//     const result = await reviewService.updateReview(
-//       req.user!.userId,
-//       req.params.id as string,
-//       req.body,
-//     );
+const updateReview = async (req: Request, res: Response) => {
+  try {
+    const result = await reviewService.updateReview(
+      req.user!.userId,
+      req.params.id as string,
+      req.body,
+    );
 
-//     res.status(httpStatus.OK).json({
-//       success: true,
-//       message: "Review updated successfully",
-//       data: result,
-//     });
-//   } catch (error) {
-//     res.status(httpStatus.BAD_REQUEST).json({
-//       success: false,
-//       message:
-//         error instanceof Error ? error.message : "Something went wrong",
-//     });
-//   }
-// };
+    res.status(httpStatus.OK).json({
+      success: true,
+      message: "Review updated successfully",
+      data: result,
+    });
+  } catch (error) {
+    res.status(httpStatus.BAD_REQUEST).json({
+      success: false,
+      message:
+        error instanceof Error ? error.message : "Something went wrong",
+    });
+  }
+};
 
 // const deleteReview = async (req: Request, res: Response) => {
 //   try {
@@ -132,6 +132,6 @@ export const reviewController = {
   getAllReviews,
   getSingleReview,
   getTechnicianReviews,
-//   updateReview,
+  updateReview,
 //   deleteReview,
 };
