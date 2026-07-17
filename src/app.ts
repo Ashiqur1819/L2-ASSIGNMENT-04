@@ -10,6 +10,8 @@ import { paymentRouter } from './modules/payment/payment.route';
 import { paymentController } from './modules/payment/payment.controller';
 import { reviewRouter } from './modules/review/review.route';
 import { adminRouter } from './modules/admin/admin.route';
+import notFound from './middlewares/notFound';
+import globalErrorHandler from './middlewares/globalErrorHandler';
 
 const app: Application = express();
 
@@ -32,6 +34,13 @@ app.use("/api/bookings", bookingRouter);
 app.use("/api/payments", paymentRouter);
 app.use("/api/reviews", reviewRouter)
 app.use("/api/admin", adminRouter)
+
+
+// Not Found Route
+app.use(notFound);
+
+// Global Error Handler
+app.use(globalErrorHandler);
 
 export default app;
 
