@@ -70,11 +70,11 @@ router.patch(
 );
 
 // Delete Category
-// router.delete(
-//   "/categories/:id",
-//   auth(Role.ADMIN),
-//   adminController.deleteCategory,
-// );
+router.delete(
+  "/categories/:id",
+  auth(Role.ADMIN),
+  adminController.deleteCategory,
+);
 
 /* ===========================
    Service Management
