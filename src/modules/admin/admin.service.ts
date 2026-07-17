@@ -298,7 +298,7 @@ export const adminService = {
   getAllUsers,
   updateUserStatus,
   getAllBookings,
-//   getAllCategories,
+  getAllCategories,
 //   createCategory,
 //   updateCategory,
 //   deleteCategory,

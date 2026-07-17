@@ -49,11 +49,11 @@ router.get(
 =========================== */
 
 // Get All Categories
-// router.get(
-//   "/categories",
-//   auth(Role.ADMIN),
-//   adminController.getAllCategories,
-// );
+router.get(
+  "/categories",
+  auth(Role.ADMIN),
+  adminController.getAllCategories,
+);
 
 // Create Category
 // router.post(
