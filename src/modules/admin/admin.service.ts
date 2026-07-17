@@ -303,5 +303,5 @@ export const adminService = {
   updateCategory,
   deleteCategory,
   deleteService,
-//   getDashboardStats,
+  getDashboardStats,
 };

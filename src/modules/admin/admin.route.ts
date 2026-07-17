@@ -9,11 +9,11 @@ const router = Router();
    Dashboard
 =========================== */
 
-// router.get(
-//   "/dashboard",
-//   auth(Role.ADMIN),
-//   adminController.getDashboardStats,
-// );
+router.get(
+  "/dashboard",
+  auth(Role.ADMIN),
+  adminController.getDashboardStats,
+);
 
 /* ===========================
    User Management

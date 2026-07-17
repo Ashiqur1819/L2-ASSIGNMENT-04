@@ -159,23 +159,23 @@ const deleteService = async (req: Request, res: Response) => {
   }
 };
 
-// const getDashboardStats = async (req: Request, res: Response) => {
-//   try {
-//     const result = await adminService.getDashboardStats();
+const getDashboardStats = async (req: Request, res: Response) => {
+  try {
+    const result = await adminService.getDashboardStats();
 
-//     res.status(httpStatus.OK).json({
-//       success: true,
-//       message: "Dashboard statistics retrieved successfully",
-//       data: result,
-//     });
-//   } catch (error) {
-//     res.status(httpStatus.BAD_REQUEST).json({
-//       success: false,
-//       message:
-//         error instanceof Error ? error.message : "Something went wrong",
-//     });
-//   }
-// };
+    res.status(httpStatus.OK).json({
+      success: true,
+      message: "Dashboard statistics retrieved successfully",
+      data: result,
+    });
+  } catch (error) {
+    res.status(httpStatus.BAD_REQUEST).json({
+      success: false,
+      message:
+        error instanceof Error ? error.message : "Something went wrong",
+    });
+  }
+};
 
 export const adminController = {
   getAllUsers,
@@ -186,5 +186,5 @@ export const adminController = {
   updateCategory,
   deleteCategory,
   deleteService,
-//   getDashboardStats,
+  getDashboardStats,
 };
