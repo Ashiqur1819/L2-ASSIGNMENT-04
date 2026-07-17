@@ -302,6 +302,6 @@ export const adminService = {
   createCategory,
   updateCategory,
   deleteCategory,
-//   deleteService,
+  deleteService,
 //   getDashboardStats,
 };

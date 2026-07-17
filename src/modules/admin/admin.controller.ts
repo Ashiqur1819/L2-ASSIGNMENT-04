@@ -141,23 +141,23 @@ const deleteCategory = async (req: Request, res: Response) => {
   }
 };
 
-// const deleteService = async (req: Request, res: Response) => {
-//   try {
-//     await adminService.deleteService(req.params.id as string);
+const deleteService = async (req: Request, res: Response) => {
+  try {
+    await adminService.deleteService(req.params.id as string);
 
-//     res.status(httpStatus.OK).json({
-//       success: true,
-//       message: "Service deleted successfully",
-//       data: null,
-//     });
-//   } catch (error) {
-//     res.status(httpStatus.BAD_REQUEST).json({
-//       success: false,
-//       message:
-//         error instanceof Error ? error.message : "Something went wrong",
-//     });
-//   }
-// };
+    res.status(httpStatus.OK).json({
+      success: true,
+      message: "Service deleted successfully",
+      data: null,
+    });
+  } catch (error) {
+    res.status(httpStatus.BAD_REQUEST).json({
+      success: false,
+      message:
+        error instanceof Error ? error.message : "Something went wrong",
+    });
+  }
+};
 
 // const getDashboardStats = async (req: Request, res: Response) => {
 //   try {
@@ -185,6 +185,6 @@ export const adminController = {
   createCategory,
   updateCategory,
   deleteCategory,
-//   deleteService,
+  deleteService,
 //   getDashboardStats,
 };

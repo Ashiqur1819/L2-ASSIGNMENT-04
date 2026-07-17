@@ -81,10 +81,10 @@ router.delete(
 =========================== */
 
 // Delete Service
-// router.delete(
-//   "/services/:id",
-//   auth(Role.ADMIN),
-//   adminController.deleteService,
-// );
+router.delete(
+  "/services/:id",
+  auth(Role.ADMIN),
+  adminController.deleteService,
+);
 
 export const adminRouter = router;
