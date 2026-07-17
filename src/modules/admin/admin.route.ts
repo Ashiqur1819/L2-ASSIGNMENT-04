@@ -56,11 +56,11 @@ router.get(
 );
 
 // Create Category
-// router.post(
-//   "/categories",
-//   auth(Role.ADMIN),
-//   adminController.createCategory,
-// );
+router.post(
+  "/categories",
+  auth(Role.ADMIN),
+  adminController.createCategory,
+);
 
 // Update Category
 // router.patch(

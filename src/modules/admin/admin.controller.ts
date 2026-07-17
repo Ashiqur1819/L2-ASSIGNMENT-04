@@ -80,25 +80,25 @@ const getAllCategories = async (req: Request, res: Response) => {
   }
 };
 
-// const createCategory = async (req: Request, res: Response) => {
-//   try {
-//     const { name } = req.body;
+const createCategory = async (req: Request, res: Response) => {
+  try {
+    const { name } = req.body;
 
-//     const result = await adminService.createCategory(name);
+    const result = await adminService.createCategory(name);
 
-//     res.status(httpStatus.CREATED).json({
-//       success: true,
-//       message: "Category created successfully",
-//       data: result,
-//     });
-//   } catch (error) {
-//     res.status(httpStatus.BAD_REQUEST).json({
-//       success: false,
-//       message:
-//         error instanceof Error ? error.message : "Something went wrong",
-//     });
-//   }
-// };
+    res.status(httpStatus.CREATED).json({
+      success: true,
+      message: "Category created successfully",
+      data: result,
+    });
+  } catch (error) {
+    res.status(httpStatus.BAD_REQUEST).json({
+      success: false,
+      message:
+        error instanceof Error ? error.message : "Something went wrong",
+    });
+  }
+};
 
 // const updateCategory = async (req: Request, res: Response) => {
 //   try {
@@ -182,7 +182,7 @@ export const adminController = {
   updateUserStatus,
   getAllBookings,
   getAllCategories,
-//   createCategory,
+  createCategory,
 //   updateCategory,
 //   deleteCategory,
 //   deleteService,
