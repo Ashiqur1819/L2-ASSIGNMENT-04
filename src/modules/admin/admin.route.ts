@@ -38,11 +38,11 @@ router.patch(
 =========================== */
 
 // Get All Bookings
-// router.get(
-//   "/bookings",
-//   auth(Role.ADMIN),
-//   adminController.getAllBookings,
-// );
+router.get(
+  "/bookings",
+  auth(Role.ADMIN),
+  adminController.getAllBookings,
+);
 
 /* ===========================
    Category Management

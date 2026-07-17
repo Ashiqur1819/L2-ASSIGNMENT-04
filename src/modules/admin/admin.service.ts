@@ -297,7 +297,7 @@ const getDashboardStats = async () => {
 export const adminService = {
   getAllUsers,
   updateUserStatus,
-//   getAllBookings,
+  getAllBookings,
 //   getAllCategories,
 //   createCategory,
 //   updateCategory,
