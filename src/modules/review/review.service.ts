@@ -61,9 +61,7 @@ const createReview = async (userId: string, payload: IReview) => {
       return sum + review.rating;
     }, 0);
 
-    const averageRating = Number(
-  (totalRating / reviews.length).toFixed(1)
-);
+    const averageRating = Number((totalRating / reviews.length).toFixed(1));
 
     await tx.technicianProfile.update({
       where: {
@@ -234,10 +232,7 @@ const updateReview = async (
   return result;
 };
 
-const deleteReview = async (
-  userId: string,
-  reviewId: string,
-) => {
+const deleteReview = async (userId: string, reviewId: string) => {
   const review = await prisma.review.findUnique({
     where: {
       id: reviewId,
@@ -272,9 +267,7 @@ const deleteReview = async (
         return sum + item.rating;
       }, 0);
 
-      averageRating = Number(
-  (totalRating / reviews.length).toFixed(1)
-);
+      averageRating = Number((totalRating / reviews.length).toFixed(1));
     }
 
     await tx.technicianProfile.update({

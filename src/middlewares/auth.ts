@@ -6,6 +6,7 @@ import { prisma } from "../lib/prisma";
 import { verifyToken } from "../utils/tokenVerify";
 import httpStatus from "http-status";
 
+// Extending the Express Request interface to include user information
 declare global {
   namespace Express {
     interface Request {
@@ -19,6 +20,7 @@ declare global {
   }
 }
 
+// Middleware to authenticate and authorize users based on JWT and roles
 export const auth = (...requiredRoles: Role[]) => {
   return async (req: Request, res: Response, next: NextFunction) => {
     try {

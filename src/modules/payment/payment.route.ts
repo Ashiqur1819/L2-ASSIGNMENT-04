@@ -5,7 +5,6 @@ import { paymentController } from "./payment.controller";
 
 const router = Router();
 
-
 // Create Payment Intent
 router.post(
   "/create",
@@ -14,17 +13,9 @@ router.post(
 );
 
 // Get My Payments
-router.get(
-  "/",
-  auth(Role.CUSTOMER),
-  paymentController.getMyPayments,
-);
+router.get("/", auth(Role.CUSTOMER), paymentController.getMyPayments);
 
 // Get Single Payment
-router.get(
-  "/:id",
-  auth(Role.CUSTOMER),
-  paymentController.getSinglePayment,
-);
+router.get("/:id", auth(Role.CUSTOMER), paymentController.getSinglePayment);
 
 export const paymentRouter = router;

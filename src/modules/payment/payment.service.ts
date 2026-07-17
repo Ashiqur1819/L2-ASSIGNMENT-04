@@ -8,26 +8,24 @@ import {
   BookingStatus,
 } from "../../../generated/prisma/enums";
 
-const createPaymentIntent = async ( userId: string, bookingId: string,) => {
+const createPaymentIntent = async (userId: string, bookingId: string) => {
   // Booking Check
   const booking = await prisma.booking.findFirst({
-  where: {
-    id: bookingId,
-    customerId: userId,
-  },
-  include: {
-    service: true,
-  },
-});
+    where: {
+      id: bookingId,
+      customerId: userId,
+    },
+    include: {
+      service: true,
+    },
+  });
 
-if (!booking) {
-  throw new Error("Booking not found");
-}
+  if (!booking) {
+    throw new Error("Booking not found");
+  }
 
   if (booking.status !== BookingStatus.ACCEPTED) {
-    throw new Error(
-      "Payment can only be made for accepted bookings",
-    );
+    throw new Error("Payment can only be made for accepted bookings");
   }
 
   // Existing Payment Check
@@ -37,10 +35,7 @@ if (!booking) {
     },
   });
 
-  if (
-    existingPayment &&
-    existingPayment.status === PaymentStatus.COMPLETED
-  ) {
+  if (existingPayment && existingPayment.status === PaymentStatus.COMPLETED) {
     throw new Error("Payment already completed");
   }
 
@@ -197,10 +192,7 @@ const getMyPayments = async (userId: string) => {
   return result;
 };
 
-const getSinglePayment = async (
-  userId: string,
-  paymentId: string,
-) => {
+const getSinglePayment = async (userId: string, paymentId: string) => {
   const payment = await prisma.payment.findUnique({
     where: {
       id: paymentId,

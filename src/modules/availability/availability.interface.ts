@@ -1,6 +1,5 @@
 import { Day } from "../../../generated/prisma/enums";
 
-
 export interface IAvailability {
   day: Day;
   startTime: string;

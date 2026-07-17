@@ -5,10 +5,6 @@ import { availabilityController } from "./availability.controller";
 
 const router = Router();
 
-/* ===========================
-   Technician Routes
-=========================== */
-
 router.post(
   "/",
   auth(Role.TECHNICIAN),
@@ -33,13 +29,6 @@ router.delete(
   availabilityController.deleteAvailability,
 );
 
-/* ===========================
-   Public Routes
-=========================== */
-
-router.get(
-  "/:technicianId",
-  availabilityController.getTechnicianAvailability,
-);
+router.get("/:technicianId", availabilityController.getTechnicianAvailability);
 
 export const availabilityRouter = router;

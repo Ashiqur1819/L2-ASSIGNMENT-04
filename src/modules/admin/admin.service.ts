@@ -1,11 +1,16 @@
-import { BookingStatus, PaymentStatus, Role, Status } from "../../../generated/prisma/enums";
+import {
+  BookingStatus,
+  PaymentStatus,
+  Role,
+  Status,
+} from "../../../generated/prisma/enums";
 import { prisma } from "../../lib/prisma";
 
 const getAllUsers = async () => {
   const users = await prisma.user.findMany({
-   where: {
-        role: {not: Role.ADMIN}
-   },
+    where: {
+      role: { not: Role.ADMIN },
+    },
 
     select: {
       id: true,
@@ -36,14 +41,11 @@ const getAllUsers = async () => {
   return users;
 };
 
-const updateUserStatus = async (
-  userId: string,
-  status: Status,
-) => {
+const updateUserStatus = async (userId: string, status: Status) => {
   const user = await prisma.user.findUnique({
     where: {
       id: userId,
-    }
+    },
   });
 
   if (!user) {
@@ -54,7 +56,7 @@ const updateUserStatus = async (
     where: {
       id: userId,
     },
-        omit: {
+    omit: {
       password: true,
     },
     data: {
@@ -146,10 +148,7 @@ const createCategory = async (name: string) => {
   return result;
 };
 
-const updateCategory = async (
-  categoryId: string,
-  name: string,
-) => {
+const updateCategory = async (categoryId: string, name: string) => {
   const category = await prisma.category.findUnique({
     where: {
       id: categoryId,
@@ -249,7 +248,7 @@ const getDashboardStats = async () => {
 
     prisma.user.count({
       where: {
-        role: Role.CUSTOMER
+        role: Role.CUSTOMER,
       },
     }),
 
@@ -263,7 +262,7 @@ const getDashboardStats = async () => {
 
     prisma.booking.count({
       where: {
-        status: BookingStatus.COMPLETED
+        status: BookingStatus.COMPLETED,
       },
     }),
 
@@ -273,7 +272,7 @@ const getDashboardStats = async () => {
 
     prisma.payment.aggregate({
       where: {
-        status: PaymentStatus.COMPLETED
+        status: PaymentStatus.COMPLETED,
       },
       _sum: {
         amount: true,
@@ -292,7 +291,6 @@ const getDashboardStats = async () => {
     totalRevenue: totalRevenue._sum.amount || 0,
   };
 };
-
 
 export const adminService = {
   getAllUsers,

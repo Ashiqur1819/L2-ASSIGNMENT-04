@@ -2,10 +2,7 @@ import { prisma } from "../../lib/prisma";
 import { BookingStatus } from "../../../generated/prisma/enums";
 import { IBooking } from "./booking.interface";
 
-const createBooking = async (
-  userId: string,
-  payload: IBooking,
-) => {
+const createBooking = async (userId: string, payload: IBooking) => {
   // Customer Check
   const customer = await prisma.user.findUnique({
     where: {
@@ -159,10 +156,7 @@ const getMyBookings = async (userId: string) => {
   return result;
 };
 
-const getSingleBooking = async (
-  userId: string,
-  bookingId: string,
-) => {
+const getSingleBooking = async (userId: string, bookingId: string) => {
   const booking = await prisma.booking.findUnique({
     where: {
       id: bookingId,
@@ -205,8 +199,7 @@ const getSingleBooking = async (
   const isCustomer = booking.customerId === userId;
 
   const isTechnician =
-    technicianProfile &&
-    booking.technicianId === technicianProfile.id;
+    technicianProfile && booking.technicianId === technicianProfile.id;
 
   if (!isCustomer && !isTechnician) {
     throw new Error("You are not authorized");
@@ -287,32 +280,24 @@ const updateBookingStatus = async (
         status !== BookingStatus.ACCEPTED &&
         status !== BookingStatus.DECLINED
       ) {
-        throw new Error(
-          "Booking can only be ACCEPTED or DECLINED",
-        );
+        throw new Error("Booking can only be ACCEPTED or DECLINED");
       }
       break;
 
     case BookingStatus.PAID:
       if (status !== BookingStatus.IN_PROGRESS) {
-        throw new Error(
-          "Only PAID bookings can be marked as IN_PROGRESS",
-        );
+        throw new Error("Only PAID bookings can be marked as IN_PROGRESS");
       }
       break;
 
     case BookingStatus.IN_PROGRESS:
       if (status !== BookingStatus.COMPLETED) {
-        throw new Error(
-          "Only IN_PROGRESS bookings can be marked as COMPLETED",
-        );
+        throw new Error("Only IN_PROGRESS bookings can be marked as COMPLETED");
       }
       break;
 
     default:
-      throw new Error(
-        `Cannot change status from ${booking.status}`,
-      );
+      throw new Error(`Cannot change status from ${booking.status}`);
   }
 
   const result = await prisma.booking.update({
@@ -360,9 +345,7 @@ const cancelBooking = async (
     booking.status === BookingStatus.IN_PROGRESS ||
     booking.status === BookingStatus.COMPLETED
   ) {
-    throw new Error(
-      "Booking cannot be cancelled after work has started",
-    );
+    throw new Error("Booking cannot be cancelled after work has started");
   }
 
   const result = await prisma.booking.update({

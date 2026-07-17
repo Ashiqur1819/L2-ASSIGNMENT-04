@@ -5,17 +5,19 @@ import { adminService } from "./admin.service";
 import catchAsync from "../../utils/catchAsync";
 import sendResponse from "../../utils/sendResponse";
 
+// Controller for retrieving all users
 const getAllUsers = catchAsync(async (req: Request, res: Response) => {
   const result = await adminService.getAllUsers();
 
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: "Categories retrieved successfully",
+    message: "Users retrieved successfully",
     data: result,
   });
 });
 
+// Controller for updating the status of a user
 const updateUserStatus = catchAsync(async (req: Request, res: Response) => {
   const { status } = req.body;
 
@@ -32,6 +34,7 @@ const updateUserStatus = catchAsync(async (req: Request, res: Response) => {
   });
 });
 
+// Controller for retrieving all bookings
 const getAllBookings = catchAsync(async (req: Request, res: Response) => {
   const result = await adminService.getAllBookings();
 
@@ -43,6 +46,7 @@ const getAllBookings = catchAsync(async (req: Request, res: Response) => {
   });
 });
 
+// Controller for retrieving all categories
 const getAllCategories = catchAsync(async (req: Request, res: Response) => {
   const result = await adminService.getAllCategories();
 
@@ -54,6 +58,7 @@ const getAllCategories = catchAsync(async (req: Request, res: Response) => {
   });
 });
 
+// Controller for creating a new category
 const createCategory = catchAsync(async (req: Request, res: Response) => {
   const { name } = req.body;
 
@@ -67,6 +72,7 @@ const createCategory = catchAsync(async (req: Request, res: Response) => {
   });
 });
 
+// Controller for updating an existing category
 const updateCategory = catchAsync(async (req: Request, res: Response) => {
   const { name } = req.body;
 
@@ -83,6 +89,7 @@ const updateCategory = catchAsync(async (req: Request, res: Response) => {
   });
 });
 
+// Controller for delete category
 const deleteCategory = catchAsync(async (req: Request, res: Response) => {
   await adminService.deleteCategory(req.params.id as string);
 
@@ -94,6 +101,7 @@ const deleteCategory = catchAsync(async (req: Request, res: Response) => {
   });
 });
 
+// Controller for delete service
 const deleteService = catchAsync(async (req: Request, res: Response) => {
   await adminService.deleteService(req.params.id as string);
 
@@ -105,6 +113,7 @@ const deleteService = catchAsync(async (req: Request, res: Response) => {
   });
 });
 
+// Controller for retrieving dashboard stats
 const getDashboardStats = catchAsync(async (req: Request, res: Response) => {
   const result = await adminService.getDashboardStats();
 

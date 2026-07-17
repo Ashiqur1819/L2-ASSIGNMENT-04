@@ -5,10 +5,6 @@ import { bookingController } from "./booking.controller";
 
 const router = Router();
 
-/* ===========================
-   Customer Routes
-=========================== */
-
 // Customer
 router.post("/", auth(Role.CUSTOMER), bookingController.createBooking);
 

@@ -1,13 +1,7 @@
 import { prisma } from "../../lib/prisma";
-import {
-  IAvailability,
-  IUpdateAvailability,
-} from "./availability.interface";
+import { IAvailability, IUpdateAvailability } from "./availability.interface";
 
-const createAvailability = async (
-  userId: string,
-  payload: IAvailability,
-) => {
+const createAvailability = async (userId: string, payload: IAvailability) => {
   const technicianProfile = await prisma.technicianProfile.findUnique({
     where: {
       userId,
@@ -30,10 +24,7 @@ const createAvailability = async (
   });
 
   const isOverlapping = existingSlots.some((slot) => {
-    return (
-      payload.startTime < slot.endTime &&
-      payload.endTime > slot.startTime
-    );
+    return payload.startTime < slot.endTime && payload.endTime > slot.startTime;
   });
 
   if (isOverlapping) {
@@ -79,11 +70,9 @@ const updateAvailability = async (
     throw new Error("You are not authorized to update this slot");
   }
 
-  const startTime =
-    payload.startTime ?? availability.startTime;
+  const startTime = payload.startTime ?? availability.startTime;
 
-  const endTime =
-    payload.endTime ?? availability.endTime;
+  const endTime = payload.endTime ?? availability.endTime;
 
   if (startTime >= endTime) {
     throw new Error("End time must be greater than start time");
@@ -100,15 +89,12 @@ const updateAvailability = async (
   });
 
   const isOverlapping = existingSlots.some((slot) => {
-    return (
-      startTime < slot.endTime &&
-      endTime > slot.startTime
-    );
+    return startTime < slot.endTime && endTime > slot.startTime;
   });
 
   if (isOverlapping) {
     throw new Error("Time slot overlaps with an existing slot");
-  };
+  }
 
   const result = await prisma.availability.update({
     where: {
@@ -120,10 +106,7 @@ const updateAvailability = async (
   return result;
 };
 
-const deleteAvailability = async (
-  userId: string,
-  availabilityId: string,
-) => {
+const deleteAvailability = async (userId: string, availabilityId: string) => {
   const technicianProfile = await prisma.technicianProfile.findUnique({
     where: {
       userId,

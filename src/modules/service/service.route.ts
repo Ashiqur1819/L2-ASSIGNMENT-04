@@ -5,13 +5,9 @@ import { serviceController } from "./service.controller";
 
 const router = Router();
 
-/* Technician */
+// Technician
 
-router.post(
-  "/",
-  auth(Role.TECHNICIAN),
-  serviceController.createService,
-);
+router.post("/", auth(Role.TECHNICIAN), serviceController.createService);
 
 router.get(
   "/my-services",
@@ -19,19 +15,11 @@ router.get(
   serviceController.getMyServices,
 );
 
-router.patch(
-  "/:id",
-  auth(Role.TECHNICIAN),
-  serviceController.updateService,
-);
+router.patch("/:id", auth(Role.TECHNICIAN), serviceController.updateService);
 
-router.delete(
-  "/:id",
-  auth(Role.TECHNICIAN),
-  serviceController.deleteService,
-);
+router.delete("/:id", auth(Role.TECHNICIAN), serviceController.deleteService);
 
-// /* Public */
+// Public
 
 router.get("/", serviceController.getAllServices);
 

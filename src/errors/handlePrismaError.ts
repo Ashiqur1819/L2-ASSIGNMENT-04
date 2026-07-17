@@ -1,6 +1,5 @@
 import { Prisma } from "../../generated/prisma/client";
 
-
 const handlePrismaError = (error: Prisma.PrismaClientKnownRequestError) => {
   let statusCode = 400;
   let message = "Database Error";

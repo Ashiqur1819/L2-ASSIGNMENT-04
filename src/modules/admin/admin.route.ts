@@ -5,62 +5,23 @@ import { adminController } from "./admin.controller";
 
 const router = Router();
 
-/* ===========================
-   Dashboard
-=========================== */
-
-router.get(
-  "/dashboard",
-  auth(Role.ADMIN),
-  adminController.getDashboardStats,
-);
-
-/* ===========================
-   User Management
-=========================== */
+// Dashboard
+router.get("/dashboard", auth(Role.ADMIN), adminController.getDashboardStats);
 
 // Get All Users
-router.get(
-  "/users",
-  auth(Role.ADMIN),
-  adminController.getAllUsers,
-);
+router.get("/users", auth(Role.ADMIN), adminController.getAllUsers);
 
 // Active / Block User
-router.patch(
-  "/users/:id",
-  auth(Role.ADMIN),
-  adminController.updateUserStatus,
-);
-
-/* ===========================
-   Booking Management
-=========================== */
+router.patch("/users/:id", auth(Role.ADMIN), adminController.updateUserStatus);
 
 // Get All Bookings
-router.get(
-  "/bookings",
-  auth(Role.ADMIN),
-  adminController.getAllBookings,
-);
-
-/* ===========================
-   Category Management
-=========================== */
+router.get("/bookings", auth(Role.ADMIN), adminController.getAllBookings);
 
 // Get All Categories
-router.get(
-  "/categories",
-  auth(Role.ADMIN),
-  adminController.getAllCategories,
-);
+router.get("/categories", auth(Role.ADMIN), adminController.getAllCategories);
 
 // Create Category
-router.post(
-  "/categories",
-  auth(Role.ADMIN),
-  adminController.createCategory,
-);
+router.post("/categories", auth(Role.ADMIN), adminController.createCategory);
 
 // Update Category
 router.patch(
@@ -76,15 +37,7 @@ router.delete(
   adminController.deleteCategory,
 );
 
-/* ===========================
-   Service Management
-=========================== */
-
 // Delete Service
-router.delete(
-  "/services/:id",
-  auth(Role.ADMIN),
-  adminController.deleteService,
-);
+router.delete("/services/:id", auth(Role.ADMIN), adminController.deleteService);
 
 export const adminRouter = router;
