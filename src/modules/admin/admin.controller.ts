@@ -2,180 +2,119 @@ import { Request, Response } from "express";
 import httpStatus from "http-status";
 import { Status } from "../../../generated/prisma/enums";
 import { adminService } from "./admin.service";
+import catchAsync from "../../utils/catchAsync";
+import sendResponse from "../../utils/sendResponse";
 
-const getAllUsers = async (req: Request, res: Response) => {
-  try {
-    const result = await adminService.getAllUsers();
+const getAllUsers = catchAsync(async (req: Request, res: Response) => {
+  const result = await adminService.getAllUsers();
 
-    res.status(httpStatus.OK).json({
-      success: true,
-      message: "Users retrieved successfully",
-      data: result,
-    });
-  } catch (error) {
-    res.status(httpStatus.BAD_REQUEST).json({
-      success: false,
-      message:
-        error instanceof Error ? error.message : "Something went wrong",
-    });
-  }
-};
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: "Categories retrieved successfully",
+    data: result,
+  });
+});
 
-const updateUserStatus = async (req: Request, res: Response) => {
-  try {
-    const { status } = req.body;
+const updateUserStatus = catchAsync(async (req: Request, res: Response) => {
+  const { status } = req.body;
 
-    const result = await adminService.updateUserStatus(
-      req.params.id as string,
-      status as Status,
-    );
+  const result = await adminService.updateUserStatus(
+    req.params.id as string,
+    status as Status,
+  );
 
-    res.status(httpStatus.OK).json({
-      success: true,
-      message: "User status updated successfully",
-      data: result,
-    });
-  } catch (error) {
-    res.status(httpStatus.BAD_REQUEST).json({
-      success: false,
-      message:
-        error instanceof Error ? error.message : "Something went wrong",
-    });
-  }
-};
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: "User status updated successfully",
+    data: result,
+  });
+});
 
-const getAllBookings = async (req: Request, res: Response) => {
-  try {
-    const result = await adminService.getAllBookings();
+const getAllBookings = catchAsync(async (req: Request, res: Response) => {
+  const result = await adminService.getAllBookings();
 
-    res.status(httpStatus.OK).json({
-      success: true,
-      message: "Bookings retrieved successfully",
-      data: result,
-    });
-  } catch (error) {
-    res.status(httpStatus.BAD_REQUEST).json({
-      success: false,
-      message:
-        error instanceof Error ? error.message : "Something went wrong",
-    });
-  }
-};
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: "Bookings retrieved successfully",
+    data: result,
+  });
+});
 
-const getAllCategories = async (req: Request, res: Response) => {
-  try {
-    const result = await adminService.getAllCategories();
+const getAllCategories = catchAsync(async (req: Request, res: Response) => {
+  const result = await adminService.getAllCategories();
 
-    res.status(httpStatus.OK).json({
-      success: true,
-      message: "Categories retrieved successfully",
-      data: result,
-    });
-  } catch (error) {
-    res.status(httpStatus.BAD_REQUEST).json({
-      success: false,
-      message:
-        error instanceof Error ? error.message : "Something went wrong",
-    });
-  }
-};
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: "Categories retrieved successfully",
+    data: result,
+  });
+});
 
-const createCategory = async (req: Request, res: Response) => {
-  try {
-    const { name } = req.body;
+const createCategory = catchAsync(async (req: Request, res: Response) => {
+  const { name } = req.body;
 
-    const result = await adminService.createCategory(name);
+  const result = await adminService.createCategory(name);
 
-    res.status(httpStatus.CREATED).json({
-      success: true,
-      message: "Category created successfully",
-      data: result,
-    });
-  } catch (error) {
-    res.status(httpStatus.BAD_REQUEST).json({
-      success: false,
-      message:
-        error instanceof Error ? error.message : "Something went wrong",
-    });
-  }
-};
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: "Categories created successfully",
+    data: result,
+  });
+});
 
-const updateCategory = async (req: Request, res: Response) => {
-  try {
-    const { name } = req.body;
+const updateCategory = catchAsync(async (req: Request, res: Response) => {
+  const { name } = req.body;
 
-    const result = await adminService.updateCategory(
-      req.params.id as string,
-      name,
-    );
+  const result = await adminService.updateCategory(
+    req.params.id as string,
+    name,
+  );
 
-    res.status(httpStatus.OK).json({
-      success: true,
-      message: "Category updated successfully",
-      data: result,
-    });
-  } catch (error) {
-    res.status(httpStatus.BAD_REQUEST).json({
-      success: false,
-      message:
-        error instanceof Error ? error.message : "Something went wrong",
-    });
-  }
-};
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: "Category updated successfully",
+    data: result,
+  });
+});
 
-const deleteCategory = async (req: Request, res: Response) => {
-  try {
-    await adminService.deleteCategory(req.params.id as string);
+const deleteCategory = catchAsync(async (req: Request, res: Response) => {
+  await adminService.deleteCategory(req.params.id as string);
 
-    res.status(httpStatus.OK).json({
-      success: true,
-      message: "Category deleted successfully",
-      data: null,
-    });
-  } catch (error) {
-    res.status(httpStatus.BAD_REQUEST).json({
-      success: false,
-      message:
-        error instanceof Error ? error.message : "Something went wrong",
-    });
-  }
-};
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: "Category deleted successfully",
+    data: null,
+  });
+});
 
-const deleteService = async (req: Request, res: Response) => {
-  try {
-    await adminService.deleteService(req.params.id as string);
+const deleteService = catchAsync(async (req: Request, res: Response) => {
+  await adminService.deleteService(req.params.id as string);
 
-    res.status(httpStatus.OK).json({
-      success: true,
-      message: "Service deleted successfully",
-      data: null,
-    });
-  } catch (error) {
-    res.status(httpStatus.BAD_REQUEST).json({
-      success: false,
-      message:
-        error instanceof Error ? error.message : "Something went wrong",
-    });
-  }
-};
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: "Service deleted successfully",
+    data: null,
+  });
+});
 
-const getDashboardStats = async (req: Request, res: Response) => {
-  try {
-    const result = await adminService.getDashboardStats();
+const getDashboardStats = catchAsync(async (req: Request, res: Response) => {
+  const result = await adminService.getDashboardStats();
 
-    res.status(httpStatus.OK).json({
-      success: true,
-      message: "Dashboard statistics retrieved successfully",
-      data: result,
-    });
-  } catch (error) {
-    res.status(httpStatus.BAD_REQUEST).json({
-      success: false,
-      message:
-        error instanceof Error ? error.message : "Something went wrong",
-    });
-  }
-};
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: "Dashboard statistics retrieved successfully",
+    data: result,
+  });
+});
 
 export const adminController = {
   getAllUsers,

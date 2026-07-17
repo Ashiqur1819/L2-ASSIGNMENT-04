@@ -1,131 +1,80 @@
 import { Request, Response } from "express";
 import httpStatus from "http-status";
 import { reviewService } from "./review.service";
+import catchAsync from "../../utils/catchAsync";
+import sendResponse from "../../utils/sendResponse";
 
-const createReview = async (req: Request, res: Response) => {
-  try {
-    const result = await reviewService.createReview(
-      req.user!.userId,
-      req.body,
-    );
+const createReview = catchAsync(async (req: Request, res: Response) => {
+  const result = await reviewService.createReview(req.user!.userId, req.body);
 
-    res.status(httpStatus.CREATED).json({
-      success: true,
-      message: "Review created successfully",
-      data: result,
-    });
-  } catch (error) {
-    res.status(httpStatus.BAD_REQUEST).json({
-      success: false,
-      message:
-        error instanceof Error ? error.message : "Something went wrong",
-    });
-  }
-};
+  sendResponse(res, {
+    statusCode: httpStatus.CREATED,
+    success: true,
+    message: "Review created successfully",
+    data: result,
+  });
+});
 
-const getAllReviews = async (req: Request, res: Response) => {
-  try {
-    const result = await reviewService.getAllReviews();
+const getAllReviews = catchAsync(async (req: Request, res: Response) => {
+  const result = await reviewService.getAllReviews();
 
-    res.status(httpStatus.OK).json({
-      success: true,
-      message: "Reviews retrieved successfully",
-      data: result,
-    });
-  } catch (error) {
-    res.status(httpStatus.BAD_REQUEST).json({
-      success: false,
-      message:
-        error instanceof Error ? error.message : "Something went wrong",
-    });
-  }
-};
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: "Reviews retrieved successfully",
+    data: result,
+  });
+});
 
-const getSingleReview = async (req: Request, res: Response) => {
-  try {
-    const result = await reviewService.getSingleReview(
-      req.params.id as string,
-    );
+const getSingleReview = catchAsync(async (req: Request, res: Response) => {
+  const result = await reviewService.getSingleReview(req.params.id as string);
 
-    res.status(httpStatus.OK).json({
-      success: true,
-      message: "Review retrieved successfully",
-      data: result,
-    });
-  } catch (error) {
-    res.status(httpStatus.BAD_REQUEST).json({
-      success: false,
-      message:
-        error instanceof Error ? error.message : "Something went wrong",
-    });
-  }
-};
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: "Review retrieved successfully",
+    data: result,
+  });
+});
 
-const getTechnicianReviews = async (
-  req: Request,
-  res: Response,
-) => {
-  try {
-    const result = await reviewService.getTechnicianReviews(
-      req.params.technicianId as string,
-    );
+const getTechnicianReviews = catchAsync(async (req: Request, res: Response) => {
+  const result = await reviewService.getTechnicianReviews(
+    req.params.technicianId as string,
+  );
 
-    res.status(httpStatus.OK).json({
-      success: true,
-      message: "Technician reviews retrieved successfully",
-      data: result,
-    });
-  } catch (error) {
-    res.status(httpStatus.BAD_REQUEST).json({
-      success: false,
-      message:
-        error instanceof Error ? error.message : "Something went wrong",
-    });
-  }
-};
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: "Technician reviews retrieved successfully",
+    data: result,
+  });
+});
 
-const updateReview = async (req: Request, res: Response) => {
-  try {
-    const result = await reviewService.updateReview(
-      req.user!.userId,
-      req.params.id as string,
-      req.body,
-    );
+const updateReview = catchAsync(async (req: Request, res: Response) => {
+  const result = await reviewService.updateReview(
+    req.user!.userId,
+    req.params.id as string,
+    req.body,
+  );
 
-    res.status(httpStatus.OK).json({
-      success: true,
-      message: "Review updated successfully",
-      data: result,
-    });
-  } catch (error) {
-    res.status(httpStatus.BAD_REQUEST).json({
-      success: false,
-      message:
-        error instanceof Error ? error.message : "Something went wrong",
-    });
-  }
-};
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: "Review updated successfully",
+    data: result,
+  });
+});
 
-const deleteReview = async (req: Request, res: Response) => {
-  try {
-    await reviewService.deleteReview(
-      req.user!.userId,
-      req.params.id as string,
-    );
+const deleteReview = catchAsync(async (req: Request, res: Response) => {
+  await reviewService.deleteReview(req.user!.userId, req.params.id as string);
 
-    res.status(httpStatus.OK).json({
-      success: true,
-      message: "Review deleted successfully",
-      data: null,
-    });
-  } catch (error) {
-    res.status(httpStatus.BAD_REQUEST).json({
-      success: false,
-      message:
-        error instanceof Error ? error.message : "Something went wrong",
-    });
-  }
-};
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: "Review deleted successfully",
+    data: null,
+  });
+});
 
 export const reviewController = {
   createReview,

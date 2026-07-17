@@ -1,112 +1,77 @@
 import { Request, Response } from "express";
 import httpStatus from "http-status";
 import { availabilityService } from "./availability.service";
+import catchAsync from "../../utils/catchAsync";
+import sendResponse from "../../utils/sendResponse";
 
-const createAvailability = async (req: Request, res: Response) => {
-  try {
-    const result = await availabilityService.createAvailability(
-      req.user!.userId,
-      req.body,
-    );
+const createAvailability = catchAsync(async (req: Request, res: Response) => {
+  const result = await availabilityService.createAvailability(
+    req.user!.userId,
+    req.body,
+  );
 
-    res.status(httpStatus.CREATED).json({
-      success: true,
-      message: "Availability created successfully",
-      data: result,
-    });
-  } catch (error) {
-    res.status(httpStatus.BAD_REQUEST).json({
-      success: false,
-      message:
-        error instanceof Error ? error.message : "Something went wrong",
-    });
-  }
-};
+  sendResponse(res, {
+    statusCode: httpStatus.CREATED,
+    success: true,
+    message: "Availability created successfully",
+    data: result,
+  });
+});
 
-const updateAvailability = async (req: Request, res: Response) => {
-  try {
-    const result = await availabilityService.updateAvailability(
-      req.user!.userId,
-      req.params.id as string,
-      req.body,
-    );
+const updateAvailability = catchAsync(async (req: Request, res: Response) => {
+  const result = await availabilityService.updateAvailability(
+    req.user!.userId,
+    req.params.id as string,
+    req.body,
+  );
 
-    res.status(httpStatus.OK).json({
-      success: true,
-      message: "Availability updated successfully",
-      data: result,
-    });
-  } catch (error) {
-    res.status(httpStatus.BAD_REQUEST).json({
-      success: false,
-      message:
-        error instanceof Error ? error.message : "Something went wrong",
-    });
-  }
-};
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: "Availability updated successfully",
+    data: result,
+  });
+});
 
-const deleteAvailability = async (req: Request, res: Response) => {
-  try {
-    await availabilityService.deleteAvailability(
-      req.user!.userId,
-      req.params.id as string,
-    );
+const deleteAvailability = catchAsync(async (req: Request, res: Response) => {
+  await availabilityService.deleteAvailability(
+    req.user!.userId,
+    req.params.id as string,
+  );
 
-    res.status(httpStatus.OK).json({
-      success: true,
-      message: "Availability deleted successfully",
-    });
-  } catch (error) {
-    res.status(httpStatus.BAD_REQUEST).json({
-      success: false,
-      message:
-        error instanceof Error ? error.message : "Something went wrong",
-    });
-  }
-};
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: "Availability deleted successfully",
+    data: null,
+  });
+});
 
-const getMyAvailability = async (req: Request, res: Response) => {
-  try {
-    const result = await availabilityService.getMyAvailability(
-      req.user!.userId,
-    );
+const getMyAvailability = catchAsync(async (req: Request, res: Response) => {
+  const result = await availabilityService.getMyAvailability(req.user!.userId);
 
-    res.status(httpStatus.OK).json({
-      success: true,
-      message: "Availability retrieved successfully",
-      data: result,
-    });
-  } catch (error) {
-    res.status(httpStatus.BAD_REQUEST).json({
-      success: false,
-      message:
-        error instanceof Error ? error.message : "Something went wrong",
-    });
-  }
-};
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: "Availability retrieved successfully",
+    data: result,
+  });
+});
 
-const getTechnicianAvailability = async (
-  req: Request,
-  res: Response,
-) => {
-  try {
+const getTechnicianAvailability = catchAsync(
+  async (req: Request, res: Response) => {
     const result = await availabilityService.getTechnicianAvailability(
       req.params.technicianId as string,
     );
 
-    res.status(httpStatus.OK).json({
+    sendResponse(res, {
+      statusCode: httpStatus.OK,
       success: true,
       message: "Availability retrieved successfully",
       data: result,
     });
-  } catch (error) {
-    res.status(httpStatus.NOT_FOUND).json({
-      success: false,
-      message:
-        error instanceof Error ? error.message : "Something went wrong",
-    });
-  }
-};
+  },
+);
 
 export const availabilityController = {
   createAvailability,
