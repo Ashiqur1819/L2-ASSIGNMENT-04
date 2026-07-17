@@ -300,7 +300,7 @@ export const adminService = {
   getAllBookings,
   getAllCategories,
   createCategory,
-//   updateCategory,
+  updateCategory,
 //   deleteCategory,
 //   deleteService,
 //   getDashboardStats,

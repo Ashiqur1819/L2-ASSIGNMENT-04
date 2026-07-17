@@ -63,11 +63,11 @@ router.post(
 );
 
 // Update Category
-// router.patch(
-//   "/categories/:id",
-//   auth(Role.ADMIN),
-//   adminController.updateCategory,
-// );
+router.patch(
+  "/categories/:id",
+  auth(Role.ADMIN),
+  adminController.updateCategory,
+);
 
 // Delete Category
 // router.delete(

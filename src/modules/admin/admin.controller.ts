@@ -100,28 +100,28 @@ const createCategory = async (req: Request, res: Response) => {
   }
 };
 
-// const updateCategory = async (req: Request, res: Response) => {
-//   try {
-//     const { name } = req.body;
+const updateCategory = async (req: Request, res: Response) => {
+  try {
+    const { name } = req.body;
 
-//     const result = await adminService.updateCategory(
-//       req.params.id as string,
-//       name,
-//     );
+    const result = await adminService.updateCategory(
+      req.params.id as string,
+      name,
+    );
 
-//     res.status(httpStatus.OK).json({
-//       success: true,
-//       message: "Category updated successfully",
-//       data: result,
-//     });
-//   } catch (error) {
-//     res.status(httpStatus.BAD_REQUEST).json({
-//       success: false,
-//       message:
-//         error instanceof Error ? error.message : "Something went wrong",
-//     });
-//   }
-// };
+    res.status(httpStatus.OK).json({
+      success: true,
+      message: "Category updated successfully",
+      data: result,
+    });
+  } catch (error) {
+    res.status(httpStatus.BAD_REQUEST).json({
+      success: false,
+      message:
+        error instanceof Error ? error.message : "Something went wrong",
+    });
+  }
+};
 
 // const deleteCategory = async (req: Request, res: Response) => {
 //   try {
@@ -183,7 +183,7 @@ export const adminController = {
   getAllBookings,
   getAllCategories,
   createCategory,
-//   updateCategory,
+  updateCategory,
 //   deleteCategory,
 //   deleteService,
 //   getDashboardStats,
