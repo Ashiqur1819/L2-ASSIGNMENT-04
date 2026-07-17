@@ -43,7 +43,7 @@ const updateUserStatus = async (
   const user = await prisma.user.findUnique({
     where: {
       id: userId,
-    },
+    }
   });
 
   if (!user) {
@@ -53,6 +53,9 @@ const updateUserStatus = async (
   const result = await prisma.user.update({
     where: {
       id: userId,
+    },
+        omit: {
+      password: true,
     },
     data: {
       status,
@@ -294,11 +297,11 @@ const getDashboardStats = async () => {
 export const adminService = {
   getAllUsers,
   updateUserStatus,
-  getAllBookings,
-  getAllCategories,
-  createCategory,
-  updateCategory,
-  deleteCategory,
-  deleteService,
-  getDashboardStats,
+//   getAllBookings,
+//   getAllCategories,
+//   createCategory,
+//   updateCategory,
+//   deleteCategory,
+//   deleteService,
+//   getDashboardStats,
 };

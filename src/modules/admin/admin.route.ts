@@ -26,12 +26,12 @@ router.get(
   adminController.getAllUsers,
 );
 
-// Ban / Unban User
-// router.patch(
-//   "/users/:id",
-//   auth(Role.ADMIN),
-//   adminController.updateUserStatus,
-// );
+// Active / Block User
+router.patch(
+  "/users/:id",
+  auth(Role.ADMIN),
+  adminController.updateUserStatus,
+);
 
 /* ===========================
    Booking Management
