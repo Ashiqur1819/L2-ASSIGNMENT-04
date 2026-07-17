@@ -82,7 +82,7 @@ const getMyServices = async (req: Request, res: Response) => {
 
 const getAllServices = async (req: Request, res: Response) => {
   try {
-    const result = await serviceService.getAllServices();
+    const result = await serviceService.getAllServices(req.query);
 
     res.status(httpStatus.OK).json({
       success: true,

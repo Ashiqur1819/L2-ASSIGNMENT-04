@@ -164,33 +164,143 @@ const getMyServices = async (userId: string) => {
   return result;
 };
 
-const getAllServices = async () => {
-  const result = await prisma.service.findMany({
-    where: {
+const getAllServices = async (query: Record<string, any>) => {
+  const {
+    searchTerm,
+    category,
+    location,
+    minPrice,
+    maxPrice,
+    rating,
+    sortBy = "createdAt",
+    sortOrder = "desc",
+    page = "1",
+    limit = "10",
+  } = query;
+
+  const andConditions: any[] = [
+    {
       isAvailable: true,
     },
-    include: {
-      category: true,
+  ];
+
+  // Search
+  if (searchTerm) {
+    andConditions.push({
+      OR: [
+        {
+          title: {
+            contains: searchTerm,
+            mode: "insensitive",
+          },
+        },
+        {
+          description: {
+            contains: searchTerm,
+            mode: "insensitive",
+          },
+        },
+      ],
+    });
+  }
+
+  // Category
+  if (category) {
+    andConditions.push({
+      category: {
+        name: {
+          equals: category,
+          mode: "insensitive",
+        },
+      },
+    });
+  }
+
+  // Location
+  if (location) {
+    andConditions.push({
       technicianProfile: {
-        include: {
-          user: {
-            select: {
-              id: true,
-              name: true,
-              email: true,
+        location: {
+          contains: location,
+          mode: "insensitive",
+        },
+      },
+    });
+  }
+
+  // Price Range
+  if (minPrice || maxPrice) {
+    andConditions.push({
+      price: {
+        gte: minPrice ? Number(minPrice) : undefined,
+        lte: maxPrice ? Number(maxPrice) : undefined,
+      },
+    });
+  }
+
+  // Rating
+  if (rating) {
+    andConditions.push({
+      technicianProfile: {
+        averageRating: {
+          gte: Number(rating),
+        },
+      },
+    });
+  }
+
+  const pageNumber = Number(page);
+  const limitNumber = Number(limit);
+  const skip = (pageNumber - 1) * limitNumber;
+
+  const whereCondition = {
+    AND: andConditions,
+  };
+
+  const [services, total] = await prisma.$transaction([
+    prisma.service.findMany({
+      where: whereCondition,
+
+      include: {
+        category: true,
+
+        technicianProfile: {
+          include: {
+            user: {
+              select: {
+                id: true,
+                name: true,
+                email: true,
+              },
             },
           },
         },
       },
-    },
-    orderBy: {
-      createdAt: "desc",
-    },
-  });
 
-  return result;
+      orderBy: {
+        [sortBy]: sortOrder,
+      },
+
+      skip,
+      take: limitNumber,
+    }),
+
+    prisma.service.count({
+      where: whereCondition,
+    }),
+  ]);
+
+  return {
+    meta: {
+      page: pageNumber,
+      limit: limitNumber,
+      total,
+      totalPage: Math.ceil(total / limitNumber),
+    },
+
+    data: services,
+  };
 };
-
 const getSingleService = async (serviceId: string) => {
   const result = await prisma.service.findUnique({
     where: {
