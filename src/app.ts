@@ -1,4 +1,4 @@
-import express, { Application } from "express";
+import express, { Application, Request, Response } from "express";
 import { authRouter } from "./modules/auth/auth.route";
 import cookieParser from "cookie-parser";
 import { technicianProfileRouter } from "./modules/technicianProfile/technicianProfile.route";
@@ -26,6 +26,10 @@ app.post(
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
+
+app.get("/", (req: Request, res: Response) => {
+  res.send("Welcome to FixItNow!")
+})
 
 // Routes
 app.use("/api/auth", authRouter);

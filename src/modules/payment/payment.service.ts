@@ -83,13 +83,10 @@ const createPaymentIntent = async (userId: string, bookingId: string) => {
 };
 
 const stripeWebhook = async (event: Stripe.Event) => {
-  console.log("EVENT:", event.type);
 
   switch (event.type) {
     case "payment_intent.succeeded": {
       const paymentIntent = event.data.object as Stripe.PaymentIntent;
-
-      console.log("PaymentIntent:", paymentIntent.id);
 
       const payment = await prisma.payment.findFirst({
         where: {
@@ -97,10 +94,7 @@ const stripeWebhook = async (event: Stripe.Event) => {
         },
       });
 
-      console.log("Payment:", payment);
-
       if (!payment) {
-        console.log("Payment not found");
         break;
       }
 
@@ -126,8 +120,6 @@ const stripeWebhook = async (event: Stripe.Event) => {
         }),
       ]);
 
-      console.log("Payment Completed");
-
       break;
     }
 
@@ -152,8 +144,6 @@ const stripeWebhook = async (event: Stripe.Event) => {
           status: PaymentStatus.FAILED,
         },
       });
-
-      console.log("Payment Failed");
 
       break;
     }

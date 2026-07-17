@@ -1,0 +1,1243 @@
+{
+  "info": {
+    "_postman_id": "376eebb1-8f8b-4152-a9d7-9154582a5a91",
+    "name": "Assignments",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "51061914",
+    "_collection_link": "https://go.postman.co/collection/51061914-376eebb1-8f8b-4152-a9d7-9154582a5a91?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "L2-Assignment-04",
+      "item": [
+        {
+          "name": "Auth",
+          "item": [
+            {
+              "name": "Register User",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Ashiqur Rahman\",\r\n    \"email\": \"ashiqur2@rahman.com\",\r\n    \"password\": 123456,\r\n    \"phone\": \"01712345678\",\r\n    \"role\": \"TECHNICIAN\",\r\n    \"status\": \"ACTIVE\"\r\n  }",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "localhost:5000/api/auth/register",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "auth",
+                    "register"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Login User",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\"email\": \"ashiqur2@rahman.com\",\r\n    \"password\": 123456\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "localhost:5000/api/auth/login",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "auth",
+                    "login"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get Me",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "localhost:5000/api/auth/me",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "auth",
+                    "me"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Technician Profile",
+          "item": [
+            {
+              "name": "Create Technician Profile",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"bio\": \"Professional electrician with 6 years of experience in residential and commercial electrical work.\",\r\n  \"experience\": 6,\r\n  \"location\": \"Dhaka\",\r\n  \"hourlyRate\": 1000\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "localhost:5000/api/technician-profile",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "technician-profile"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Update Technician Profile",
+              "request": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"hourlyRate\": 1500\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "localhost:5000/api/technician-profile",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "technician-profile"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get My Profile",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "localhost:5000/api/technician-profile/me",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "technician-profile",
+                    "me"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get Single Technician Profile",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "localhost:5000/api/technician-profile/29fedfd5-f99b-437b-9ca9-8ac63e0c3877",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "technician-profile",
+                    "29fedfd5-f99b-437b-9ca9-8ac63e0c3877"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Category",
+          "item": [
+            {
+              "name": "Create Category",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"name\": \"AC Repair\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "localhost:5000/api/categories",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "categories"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get All Categories",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "localhost:5000/api/categories",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "categories"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get Single Category",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "localhost:5000/api/categories/880d741a-ea99-4aa9-ba70-8efd8cd0b63e",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "categories",
+                    "880d741a-ea99-4aa9-ba70-8efd8cd0b63e"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Update Category",
+              "request": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"AC Repair\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "localhost:5000/api/categories/880d741a-ea99-4aa9-ba70-8efd8cd0b63e",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "categories",
+                    "880d741a-ea99-4aa9-ba70-8efd8cd0b63e"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Delete Category",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "localhost:5000/api/categories/7e4e5163-a75d-4764-bf0b-be78180c3bdf",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "categories",
+                    "7e4e5163-a75d-4764-bf0b-be78180c3bdf"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Services",
+          "item": [
+            {
+              "name": "Create Service",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"title\": \"Bathroom Pipe Installation 2\",\r\n    \"description\": \"New bathroom pipeline installation and fittings.\",\r\n    \"price\": 4500,\r\n    \"categoryId\": \"d9b13bea-239f-4977-9f6f-38b7d9ce658c\",\r\n    \"estimatedDuration\": 240,\r\n    \"isAvailable\": false\r\n  }",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "localhost:5000/api/services",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "services"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Update Service",
+              "request": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"title\": \"AC Installation\",\r\n    \"description\": \"Professional installation of split and window air conditioners with proper testing.\",\r\n    \"price\": 1500,\r\n    \"estimatedDuration\": 180,\r\n    \"isAvailable\": true\r\n  }",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "localhost:5000/api/services/e7fb0a47-386f-4d1a-8e39-dffddd55895d",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "services",
+                    "e7fb0a47-386f-4d1a-8e39-dffddd55895d"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Delete Service",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "localhost:5000/api/services/90f24c98-2cb2-4848-b3c8-e84d490f7ccf",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "services",
+                    "90f24c98-2cb2-4848-b3c8-e84d490f7ccf"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get My Services",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "localhost:5000/api/services/my-services",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "services",
+                    "my-services"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get All Services",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "localhost:5000/api/services?searchTerm=plumbing&category=Plumbing&location=Dhaka&minPrice=500&maxPrice=2000&rating=4&page=1&limit=10&sortBy=price&sortOrder=asc",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "services"
+                  ],
+                  "query": [
+                    {
+                      "key": "searchTerm",
+                      "value": "plumbing"
+                    },
+                    {
+                      "key": "category",
+                      "value": "Plumbing"
+                    },
+                    {
+                      "key": "location",
+                      "value": "Dhaka"
+                    },
+                    {
+                      "key": "minPrice",
+                      "value": "500"
+                    },
+                    {
+                      "key": "maxPrice",
+                      "value": "2000"
+                    },
+                    {
+                      "key": "rating",
+                      "value": "4"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "sortBy",
+                      "value": "price"
+                    },
+                    {
+                      "key": "sortOrder",
+                      "value": "asc"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get Single Service",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"title\": \"Bathroom Pipe Installation\",\r\n    \"description\": \"New bathroom pipeline installation and fittings.\",\r\n    \"price\": 4500,\r\n    \"categoryId\": \"d9b13bea-239f-4977-9f6f-38b7d9ce658c\",\r\n    \"estimatedDuration\": 240,\r\n    \"isAvailable\": false\r\n  }"
+                },
+                "url": {
+                  "raw": "localhost:5000/api/services/e7fb0a47-386f-4d1a-8e39-dffddd55895d",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "services",
+                    "e7fb0a47-386f-4d1a-8e39-dffddd55895d"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Availabilities",
+          "item": [
+            {
+              "name": "Create Availability",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"day\": \"FRIDAY\",\r\n    \"startTime\": \"20:00\",\r\n    \"endTime\": \"22:00\",\r\n    \"isAvailable\": false\r\n  }",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "localhost:5000/api/availabilities",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "availabilities"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Update Availability",
+              "request": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"day\": \"FRIDAY\",\r\n    \"startTime\": \"09:00\",\r\n    \"endTime\": \"15:00\"\r\n  }",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "localhost:5000/api/availabilities/230603b4-0a6f-40a4-b9a9-26d334ad7ba7",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "availabilities",
+                    "230603b4-0a6f-40a4-b9a9-26d334ad7ba7"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Delete Availability",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "localhost:5000/api/availabilities/a6b9a4af-bfa0-45d7-97c0-644c9b583e79",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "availabilities",
+                    "a6b9a4af-bfa0-45d7-97c0-644c9b583e79"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get My Availability",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "localhost:5000/api/availabilities/my-slots",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "availabilities",
+                    "my-slots"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get Technician Availability",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "localhost:5000/api/availabilities/754362c7-25d7-45de-84ff-47856f127fe5",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "availabilities",
+                    "754362c7-25d7-45de-84ff-47856f127fe5"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Bookings",
+          "item": [
+            {
+              "name": "Create Booking",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"serviceId\": \"e2037949-24c2-401f-86d2-23093b75886b\",\r\n    \"bookingDate\": \"2026-07-20T00:00:00.000Z\",\r\n    \"startTime\": \"2026-07-20T20:00:00.000Z\",\r\n    \"endTime\": \"2026-07-20T22:00:00.000Z\",\r\n    \"address\": \"Mohammadpur, Dhaka\",\r\n    \"problemDescription\": \"Water pump is making unusual noise.\",\r\n    \"availabilityId\": \"c21ff396-de9a-483e-a5fa-6c3c350c5c4f\"\r\n  }",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "localhost:5000/api/bookings",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "bookings"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get My Bookings",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "localhost:5000/api/bookings",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "bookings"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get Single Booking",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "localhost:5000/api/bookings/8e881c84-5dd9-4329-a521-e83e004ee323",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "bookings",
+                    "8e881c84-5dd9-4329-a521-e83e004ee323"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get Technician Bookings",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "localhost:5000/api/bookings/technician",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "bookings",
+                    "technician"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Update Booking Status",
+              "request": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"status\": \"ACCEPTED\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "localhost:5000/api/bookings/8e6def35-1518-4a8f-a3af-32df2babab88/status",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "bookings",
+                    "8e6def35-1518-4a8f-a3af-32df2babab88",
+                    "status"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Cancel Booking",
+              "request": {
+                "method": "PATCH",
+                "header": [],
+                "url": {
+                  "raw": "localhost:5000/api/bookings/8e881c84-5dd9-4329-a521-e83e004ee323/cancel",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "bookings",
+                    "8e881c84-5dd9-4329-a521-e83e004ee323",
+                    "cancel"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Payment",
+          "item": [
+            {
+              "name": "Create Payment Intent",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"bookingId\": \"504e5e81-8fa0-41d6-a3e2-e3ee65fb3181\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "localhost:5000/api/payments/create",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "payments",
+                    "create"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Stripe Webhook",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "url": {
+                  "raw": "localhost:5000/api/payments/webhook",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "payments",
+                    "webhook"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get My Payments",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "localhost:5000/api/payments",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "payments"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get Single Payment",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "localhost:5000/api/payments/047b60f4-3597-4d97-8c3e-255917801849",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "payments",
+                    "047b60f4-3597-4d97-8c3e-255917801849"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Review",
+          "item": [
+            {
+              "name": "Create Review",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"bookingId\": \"504e5e81-8fa0-41d6-a3e2-e3ee65fb3181\",\r\n  \"rating\": 5,\r\n  \"comment\": \"Excellent service. Very professional technician.\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "localhost:5000/api/reviews",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "reviews"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get All Reviews",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "localhost:5000/api/reviews",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "reviews"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get Single Review",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "localhost:5000/api/reviews",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "reviews"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get Technician Reviews",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "localhost:5000/api/reviews/technician/754362c7-25d7-45de-84ff-47856f127fe5",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "reviews",
+                    "technician",
+                    "754362c7-25d7-45de-84ff-47856f127fe5"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Update Review",
+              "request": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"rating\": 4,\r\n  \"comment\": \"Good service.\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "localhost:5000/api/reviews/b924920a-a360-4f77-aeb1-95b76ab80c81",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "reviews",
+                    "b924920a-a360-4f77-aeb1-95b76ab80c81"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Delete Review",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "localhost:5000/api/reviews/b924920a-a360-4f77-aeb1-95b76ab80c81",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "reviews",
+                    "b924920a-a360-4f77-aeb1-95b76ab80c81"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Admin",
+          "item": [
+            {
+              "name": "Get All Users",
+              "request": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"status\": \"ACTIVE\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "localhost:5000/api/admin/users/994e08d3-f3fe-4fdb-a6c1-fadfc890aa7c",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "admin",
+                    "users",
+                    "994e08d3-f3fe-4fdb-a6c1-fadfc890aa7c"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Update User Status",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "localhost:5000/api/admin/users/",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "admin",
+                    "users",
+                    ""
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get All Bookings",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "localhost:5000/api/admin/bookings",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "admin",
+                    "bookings"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get All Categories",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "localhost:5000/api/admin/categories",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "admin",
+                    "categories"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Create Categories",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Roofing\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "localhost:5000/api/admin/categories",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "admin",
+                    "categories"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Update Categories",
+              "request": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\" : \"Update Roofing\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "localhost:5000/api/admin/categories/2525f89f-4b47-4e62-bdac-b19d86a24f3b",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "admin",
+                    "categories",
+                    "2525f89f-4b47-4e62-bdac-b19d86a24f3b"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Delete Categories",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "localhost:5000/api/admin/categories/2525f89f-4b47-4e62-bdac-b19d86a24f3b",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "admin",
+                    "categories",
+                    "2525f89f-4b47-4e62-bdac-b19d86a24f3b"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Delete Categories Copy",
+              "request": {
+                "method": "GET",
+                "header": []
+              },
+              "response": []
+            },
+            {
+              "name": "Delete Categories Copy",
+              "request": {
+                "method": "GET",
+                "header": []
+              },
+              "response": []
+            },
+            {
+              "name": "Delete Service",
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "localhost:5000/api/admin/services/9b911c36-6866-4602-be10-b25bbeed5699",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "admin",
+                    "services",
+                    "9b911c36-6866-4602-be10-b25bbeed5699"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Dashboard Stats",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "localhost:5000/api/admin/dashboard",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "5000",
+                  "path": [
+                    "api",
+                    "admin",
+                    "dashboard"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

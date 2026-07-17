@@ -5,13 +5,14 @@
   "main": "index.js",
   "scripts": {
     "dev": "tsx --watch src/server.ts",
-    "build": "tsc",
-    "start": "node /dist/server.js"
+    "build": "tsup",
+    "start": "node dist/server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "module",
+  "postinstall": "prisma generate",
   "devDependencies": {
     "@types/express": "^5.0.6",
     "@types/jsonwebtoken": "^9.0.10",
@@ -32,6 +33,7 @@
     "http-status": "^2.1.0",
     "jsonwebtoken": "^9.0.3",
     "pg": "^8.22.0",
-    "stripe": "^22.3.2"
+    "stripe": "^22.3.2",
+    "tsup": "^8.5.1"
   }
 }
